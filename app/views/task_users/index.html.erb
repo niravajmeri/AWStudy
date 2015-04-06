@@ -1,0 +1,31 @@
+<h1>Listing task_users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>User</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @task_users.each do |task_user| %>
+      <tr>
+        <td><%= task_user.task_id %></td>
+        <td><%= task_user.user_id %></td>
+        <td><%= task_user.status %></td>
+        <td><%= link_to 'Show', task_user %></td>
+        <td><%= link_to 'Edit', edit_task_user_path(task_user) %></td>
+        <td><%= link_to 'Destroy', task_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task user', new_task_user_path %>

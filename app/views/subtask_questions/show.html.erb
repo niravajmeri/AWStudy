@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subtask:</strong>
+  <%= @subtask_question.subtask_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @subtask_question.description %>
+</p>
+
+<%= link_to 'Edit', edit_subtask_question_path(@subtask_question) %> |
+<%= link_to 'Back', subtask_questions_path %>

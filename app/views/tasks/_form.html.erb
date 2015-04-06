@@ -1,0 +1,61 @@
+<%= form_for(@task, html: {class: 'form-horizontal'}) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :title, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :description, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :attach1, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :attach1, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :attach2, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :attach2, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :attach3, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :attach3, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :attach4, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :attach4, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :attach5, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :attach5, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="actions form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <%= f.submit %>
+    </div>
+  </div>
+<% end %>

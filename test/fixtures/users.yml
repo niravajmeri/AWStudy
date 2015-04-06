@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mturk_id: 
+  password: 
+  email: 
+
+two:
+  mturk_id: 
+  password: 
+  email: 

@@ -1,0 +1,49 @@
+<%= form_for(@subtask) do |f| %>
+  <% if @subtask.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subtask.errors.count, "error") %> prohibited this subtask from being saved:</h2>
+
+      <ul>
+      <% @subtask.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :task_id %><br>
+    <%= f.number_field :task_id %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :attach1 %><br>
+    <%= f.text_field :attach1 %>
+  </div>
+  <div class="field">
+    <%= f.label :attach2 %><br>
+    <%= f.text_field :attach2 %>
+  </div>
+  <div class="field">
+    <%= f.label :attach3 %><br>
+    <%= f.text_field :attach3 %>
+  </div>
+  <div class="field">
+    <%= f.label :attach4 %><br>
+    <%= f.text_field :attach4 %>
+  </div>
+  <div class="field">
+    <%= f.label :attach5 %><br>
+    <%= f.text_field :attach5 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,45 @@
+<h1>Listing subtask_users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subtask</th>
+      <th>User</th>
+      <th>Status</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Answer1</th>
+      <th>Answer2</th>
+      <th>Answer3</th>
+      <th>Answer4</th>
+      <th>Answer5</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subtask_users.each do |subtask_user| %>
+      <tr>
+        <td><%= subtask_user.subtask_id %></td>
+        <td><%= subtask_user.user_id %></td>
+        <td><%= subtask_user.status %></td>
+        <td><%= subtask_user.start_time %></td>
+        <td><%= subtask_user.end_time %></td>
+        <td><%= subtask_user.answer1 %></td>
+        <td><%= subtask_user.answer2 %></td>
+        <td><%= subtask_user.answer3 %></td>
+        <td><%= subtask_user.answer4 %></td>
+        <td><%= subtask_user.answer5 %></td>
+        <td><%= link_to 'Show', subtask_user %></td>
+        <td><%= link_to 'Edit', edit_subtask_user_path(subtask_user) %></td>
+        <td><%= link_to 'Destroy', subtask_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subtask user', new_subtask_user_path %>

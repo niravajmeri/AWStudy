@@ -1,0 +1,29 @@
+<h1>Listing subtask_questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subtask</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subtask_questions.each do |subtask_question| %>
+      <tr>
+        <td><%= subtask_question.subtask_id %></td>
+        <td><%= subtask_question.description %></td>
+        <td><%= link_to 'Show', subtask_question %></td>
+        <td><%= link_to 'Edit', edit_subtask_question_path(subtask_question) %></td>
+        <td><%= link_to 'Destroy', subtask_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subtask question', new_subtask_question_path %>

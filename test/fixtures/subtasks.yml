@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  task_id: 1
+  title: 
+  description: MyText
+  attach1: MyString
+  attach2: MyString
+  attach3: MyString
+  attach4: MyString
+  attach5: MyString
+
+two:
+  task_id: 1
+  title: 
+  description: MyText
+  attach1: MyString
+  attach2: MyString
+  attach3: MyString
+  attach4: MyString
+  attach5: MyString

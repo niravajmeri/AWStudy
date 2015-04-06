@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subtask:</strong>
+  <%= @subtask_user.subtask_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @subtask_user.user_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @subtask_user.status %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @subtask_user.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @subtask_user.end_time %>
+</p>
+
+<p>
+  <strong>Answer1:</strong>
+  <%= @subtask_user.answer1 %>
+</p>
+
+<p>
+  <strong>Answer2:</strong>
+  <%= @subtask_user.answer2 %>
+</p>
+
+<p>
+  <strong>Answer3:</strong>
+  <%= @subtask_user.answer3 %>
+</p>
+
+<p>
+  <strong>Answer4:</strong>
+  <%= @subtask_user.answer4 %>
+</p>
+
+<p>
+  <strong>Answer5:</strong>
+  <%= @subtask_user.answer5 %>
+</p>
+
+<%= link_to 'Edit', edit_subtask_user_path(@subtask_user) %> |
+<%= link_to 'Back', subtask_users_path %>
