@@ -1,16 +1,16 @@
-<h1>Listing subtasks</h1>
+<h4>Subtasks</h4>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Task</th>
       <th>Title</th>
       <th>Description</th>
-      <th>Attach1</th>
+      <!--<th>Attach1</th>
       <th>Attach2</th>
       <th>Attach3</th>
       <th>Attach4</th>
-      <th>Attach5</th>
+      <th>Attach5</th>-->
       <th></th>
       <th></th>
       <th></th>
@@ -23,14 +23,14 @@
         <td><%= subtask.task_id %></td>
         <td><%= subtask.title %></td>
         <td><%= subtask.description %></td>
-        <td><%= subtask.attach1 %></td>
-        <td><%= subtask.attach2 %></td>
-        <td><%= subtask.attach3 %></td>
-        <td><%= subtask.attach4 %></td>
-        <td><%= subtask.attach5 %></td>
-        <td><%= link_to 'Show', subtask %></td>
-        <td><%= link_to 'Edit', edit_subtask_path(subtask) %></td>
-        <td><%= link_to 'Destroy', subtask, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--<td><%#= subtask.attach1 %></td>
+        <td><%#= subtask.attach2 %></td>
+        <td><%#= subtask.attach3 %></td>
+        <td><%#= subtask.attach4 %></td>
+        <td><%#= subtask.attach5 %></td>-->
+        <td><%= link_to 'Show', subtask, class: 'btn btn-primary btn-xs'   %></td>
+        <td><%= link_to 'Edit', edit_subtask_path(subtask), class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Destroy', subtask, method: :delete, data: { confirm: 'Are you sure?', class: 'btn btn-danger btn-xs' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Subtask', new_subtask_path %>
+<%= link_to 'New Subtask', new_subtask_path, class: 'btn btn-success'   %>

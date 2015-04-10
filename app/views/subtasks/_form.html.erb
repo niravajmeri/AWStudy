@@ -1,4 +1,4 @@
-<%= form_for(@subtask) do |f| %>
+<%= form_for(@subtask, html: {class: 'form-horizontal'}) do |f| %>
   <% if @subtask.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@subtask.errors.count, "error") %> prohibited this subtask from being saved:</h2>
@@ -11,39 +11,57 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :task_id %><br>
-    <%= f.number_field :task_id %>
+  <div class="field form-group">
+    <%= f.label :task_id, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.number_field :task_id, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="field form-group">
+    <%= f.label :title, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  <div class="field form-group">
+    <%= f.label :description, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :attach1 %><br>
-    <%= f.text_field :attach1 %>
+  <div class="field form-group">
+    <%= f.label :attach1, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :attach1, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :attach2 %><br>
-    <%= f.text_field :attach2 %>
+  <div class="field form-group">
+    <%= f.label :attach2, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :attach2, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :attach3 %><br>
-    <%= f.text_field :attach3 %>
+  <div class="field form-group">
+    <%= f.label :attach3, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :attach3, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :attach4 %><br>
-    <%= f.text_field :attach4 %>
+  <div class="field form-group">
+    <%= f.label :attach4, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :attach4, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :attach5 %><br>
-    <%= f.text_field :attach5 %>
+  <div class="field form-group">
+    <%= f.label :attach5, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.text_field :attach5, class: 'form-control' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit 'Submit', class: 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
