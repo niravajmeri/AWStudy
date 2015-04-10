@@ -1,4 +1,8 @@
-<h4>Tasks</h4>
+<h4>Tasks 
+  <%= link_to new_task_path, class: 'btn btn-success' do %>
+    <i class="glyphicon glyphicon-plus"></i> New Task
+  <% end %>
+</h4>
 
 <table class="table">
   <thead>
@@ -36,4 +40,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path, class: 'btn btn-success'  %>
+<%#= link_to 'New Task', new_task_path, class: 'btn btn-success'  %>

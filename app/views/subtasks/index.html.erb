@@ -1,4 +1,9 @@
-<h4>Subtasks</h4>
+<h4>Subtasks 
+  <%= link_to new_subtask_path, class: 'btn btn-success', class: 'btn btn-success' do %>
+    <i class="glyphicon glyphicon-plus"></i> New Subtask
+  <% end %>
+
+</h4>
 
 <table class="table">
   <thead>
@@ -20,7 +25,7 @@
   <tbody>
     <% @subtasks.each do |subtask| %>
       <tr>
-        <td><%= subtask.task_id %></td>
+        <td><%= subtask.task.title %></td>
         <td><%= subtask.title %></td>
         <td><%= subtask.description %></td>
         <!--<td><%#= subtask.attach1 %></td>
@@ -30,7 +35,7 @@
         <td><%#= subtask.attach5 %></td>-->
         <td><%= link_to 'Show', subtask, class: 'btn btn-primary btn-xs'   %></td>
         <td><%= link_to 'Edit', edit_subtask_path(subtask), class: 'btn btn-info btn-xs' %></td>
-        <td><%= link_to 'Destroy', subtask, method: :delete, data: { confirm: 'Are you sure?', class: 'btn btn-danger btn-xs' } %></td>
+        <td><%= link_to 'Destroy', subtask, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs'  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +43,4 @@
 
 <br>
 
-<%= link_to 'New Subtask', new_subtask_path, class: 'btn btn-success'   %>
+<%#= link_to 'New Subtask', new_subtask_path, class: 'btn btn-success'   %>

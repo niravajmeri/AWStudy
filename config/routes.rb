@@ -13,6 +13,9 @@ LASAwStudy::Application.routes.draw do
 
   resources :users
 
+  get "login" => "home#login", :as => "login"
+  get "survey" => "home#survey", :as => "survey"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

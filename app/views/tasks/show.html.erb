@@ -35,5 +35,34 @@
   <%= @task.attach5 %>
 </p>
 
+<h4>Subtasks</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+<tbody>
+    <% @task.subtasks.each do |subtask| %>
+      <tr>
+        <td><%= subtask.title %></td>
+        <td>
+          <%= subtask.description %>
+              <ul>
+                <% subtask.subtask_questions.each do |subtask_question| %>
+                  <li><%= subtask_question.description%></li>
+                <% end %>
+              </ul>
+        </td>
+
+    <% end %>
+  </tbody>
+</table>
+
+
+
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
