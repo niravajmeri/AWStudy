@@ -12,7 +12,7 @@ LASAwStudy::Application.routes.draw do
   resources :tasks
 
   resources :users
-
+  post "signin" => "home#signin", :as => "sigin"
   get "login" => "home#login", :as => "login"
   get "survey" => "home#survey", :as => "survey"
 
