@@ -1,0 +1,23 @@
+Welcome <%=@user.mturk_id%>
+
+<h2>Task</h2>
+<p><%=@task_user.description%><p>
+
+<h3>Subtasks</h3>
+  <dl>
+    <% @task_user.subtasks.each do |subtask| %>
+        <dt><%= subtask.title %></td>
+        <dd><%= subtask.description %>
+              <dl>
+                <% subtask.subtask_questions.each_with_index do |subtask_question, index| %>
+                  <dt>Question <%=index+1%></dt>
+                  <dd><%= subtask_question.description%></dd>
+                  <%= form_for(@subtask_question_user, html: {class: 'form-horizontal'}) do |f| %>
+                  <dd><%= f.text_field :description, class: 'form-control' %></dd>
+		  <dd><%= f.submit 'Submit', class: 'btn btn-default' %></dd>
+                  <%end%>
+                <% end %>
+              </dl>
+        </dd>
+    <% end %>
+  </dl>
