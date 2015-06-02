@@ -30,6 +30,12 @@
     </div>
   </div>
   <div class="field form-group">
+    <%= f.label :duration, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-10">
+      <%= f.number_field :duration, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="field form-group">
     <%= f.label :attach1, class: 'col-sm-2 control-label'  %>
     <div class="col-sm-10">
       <%= f.text_field :attach1, class: 'form-control' %>

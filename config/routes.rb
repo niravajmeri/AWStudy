@@ -12,16 +12,30 @@ LASAwStudy::Application.routes.draw do
   resources :tasks
 
   resources :users
+
+  post "update_user_response" => "home#update_user_response", :as => "update_user_response"
+  post "record_user_response" => "home#record_user_response", :as => "record_user_response"
   post "signin" => "home#signin", :as => "sigin"
+  
+  get "workflow_completion_survey" => "home#workflow_completion_survey", :as => "workflow_completion_survey"
+  get "pre_participation_survey" => "home#pre_survey", :as => "pre_participation_survey"
+  get "welcome" => "home#welcome", :as => "welcome"
+  get "logout" => "home#logout", :as => "logout"
   get "login" => "home#login", :as => "login"
   get "survey" => "home#survey", :as => "survey"
+  get "timed_survey" => "home#timed_survey", :as => "timed_survey"
+  get "untimed_survey" => "home#untimed_survey", :as => "untimed_survey"
+
+  get "update_task_status" => "home#update_task_status", :as => "update_task_status"
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-
+  root 'home#login'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

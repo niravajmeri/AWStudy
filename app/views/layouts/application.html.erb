@@ -9,23 +9,51 @@
 <body>
 
   <%= render 'shared/navigation' %>
-    <div id="main-container" class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <% flash.each do |name, msg| -%>
-            <%= content_tag :div, msg, class: "alert alert-#{name}" %>
-          <% end -%>
-        </div>
-      </div>    	
-      <div class="row">
-        <!--<div class="col-xs-3">
-          <h3>LAS AW Study</h3>
-        </div>-->
-        <div class="col-xs-12">
+
+  <div class="container-fluid">
+    <div class="row">
+      <% if session[:user_id] != nil %>
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li <% if params[:action] == "welcome"%> class="active" <%end%>><%= link_to "Dashboard", controller: :home, action: :welcome%></li>
+          <li <% if params[:action] == "pre_survey"%> class="active" <%end%>><%=link_to "Pre-participation Survey", controller: :home, action: :pre_survey%></li>
+
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li <% if params[:action] == "untimed_survey"%> class="active" <%end%>><%=link_to "Workflow 1", controller: :home, action: :untimed_survey%></li>
+          <li <% if params[:action] == "workflow_completion_survey"%> class="active" <%end%>><%=link_to "Workflow 1 Completion Survey", controller: :home, action: :workflow_completion_survey%></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li <% if params[:action] == "timed_survey"%> class="active" <%end%>><%=link_to "Workflow 2", controller: :home, action: :timed_survey%></li>
+          <li <% if params[:action] == "workflow_completion_survey"%> class="active" <%end%>><%=link_to "Workflow 2 Completion Survey", controller: :home, action: :workflow_completion_survey%></li>
+          <li><a href="">Feedback</a></li>
+        </ul>
+      </div>
+      <% end %>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <%#= params[:controller] + "_" + params[:action] %>
           <%= yield %>
-        </div>
       </div>
     </div>
+  </div>
+
+
+
+
+  <!--<div id="main-container" class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <%# flash.each do |name, msg| -%>
+          <%#= content_tag :div, msg, class: "alert alert-#{name}" %>
+        <%# end -%>
+      </div>
+    </div>    	
+    <div class="row">
+      <div class="col-xs-12">
+        <%#= yield %>
+      </div>
+    </div>
+  </div>-->
 
 </body>
 </html>
