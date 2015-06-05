@@ -65,11 +65,7 @@ class HomeController < ApplicationController
   def update_completion_status
     @user = User.find(session[:user_id])
 
-<<<<<<< HEAD
     if(params[:task] == "presurvey" and params[:key] == "key")
-=======
-    if(params[:task} == "presurvey" and params[:key] == "key")
->>>>>>> 89128d6faa72c00ad93205e661818e284b2ee08c
       @user.presurvey_status = 1
     elsif(params[:task] == "untimed_survey")
       @user.untimed_survey_status = 1

@@ -21,11 +21,11 @@
         </ul>
         <ul class="nav nav-sidebar">
           <li <% if params[:action] == "untimed_survey"%> class="active" <%end%>><%=link_to "Workflow 1", controller: :home, action: :untimed_survey%></li>
-          <li <% if params[:action] == "untimed_completion_survey"%> class="active" <%end%>><%=link_to "Workflow 1 Completion Survey", controller: :home, action: :workflow_completion_survey%></li>
+          <li <% if params[:action] == "untimed_completion_survey"%> class="active" <%end%>><%=link_to "Workflow 1 Completion Survey", controller: :home, action: :untimed_completion_survey%></li>
         </ul>
         <ul class="nav nav-sidebar">
           <li <% if params[:action] == "timed_survey"%> class="active" <%end%>><%=link_to "Workflow 2", controller: :home, action: :timed_survey%></li>
-          <li <% if params[:action] == "timed_completion_survey"%> class="" <%end%>><%=link_to "Workflow 2 Completion Survey", controller: :home, action: :workflow_completion_survey%></li>
+          <li <% if params[:action] == "timed_completion_survey"%> class="" <%end%>><%=link_to "Workflow 2 Completion Survey", controller: :home, action: :timed_completion_survey%></li>
           <li><a href="">Feedback</a></li>
         </ul>
       </div>
