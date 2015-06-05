@@ -67,6 +67,7 @@ class HomeController < ApplicationController
     @user = User.find(1)
     @task_user = @user.tasks.first
     @subtask_question_user = SubtaskQuestionUser.new
+
   end
 
   def record_user_response
@@ -82,6 +83,7 @@ class HomeController < ApplicationController
   end
 
   def update_user_response
+
     @subtask_question_user = SubtaskQuestionUser.find_by_id(params[:subtask_question_user_id])
     @subtask_question_user.user_id = session[:user_id]
     @subtask_question_user.subtask_question_id = params[:subtask_question_id]
