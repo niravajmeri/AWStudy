@@ -16,53 +16,53 @@
 
   <ul>
     <li>
-      <% if @user.presurvey_status == 0%>
+      <% if !@user.presurvey_status %>
         <%=link_to "Pre-participation Survey", controller: :home, action: :pre_survey%>
-      <% elsif @user.presurvey_status == 1 %>
+      <% elsif @user.presurvey_status%>
         <s>Pre-participation Survey</s>
       <% end %>
     </li>
     <li><%#=link_to "Task 1", :controller=> :home, :action => :untimed_survey%>
-      <% if @user.untimed_survey_status == 0 %> 
-        <% if @user.presurvey_status == 1 %>
+      <% if !@user.untimed_survey_status%> 
+        <% if @user.presurvey_status%>
           <%=link_to "Workflow 1", controller: :home, action: :untimed_survey%>
         <% else %>
           Workflow 1
         <% end %>
-      <% elsif @user.untimed_survey_status == 1%>
+      <% elsif @user.untimed_survey_status%>
         <s>Workflow 1</s>
       <%end%>
     </li>
     <li>
-      <% if @user.untimed_completion_survey_status == 0 %> 
-        <% if @user.untimed_survey_status == 1 %>
+      <% if !@user.untimed_completion_survey_status%> 
+        <% if @user.untimed_survey_status%>
           <%=link_to "Workflow 1 Completion Survey", controller: :home, action: :workflow_completion_survey%>
         <% else %>
           Workflow 1 Completion Survey
         <% end %>
-      <% elsif @user.untimed_completion_survey_status == 1%>
+      <% elsif @user.untimed_completion_survey_status1%>
         <s>Workflow 1</s>
       <%end%>    
     </li>
     <li>
-      <% if @user.timed_survey_status == 0 %> 
-        <% if @user.untimed_completion_survey_status == 1 %>
+      <% if !@user.timed_survey_status%> 
+        <% if @user.untimed_completion_survey_status%>
           <%=link_to "Workflow 2", controller: :home, action: :untimed_survey%>
         <% else %>
           Workflow 2
         <% end %>
-      <% elsif @user.timed_survey_status == 1%>
+      <% elsif @user.timed_survey_status%>
         <s>Workflow 2</s>
       <%end%>
     </li>
     <li>
-      <% if @user.timed_completion_survey_status == 0 %> 
-        <% if @user.timed_survey_status == 1 %>
+      <% if !@user.timed_completion_survey_status%> 
+        <% if @user.timed_survey_status%>
           <%=link_to "Workflow 2 Completion Survey", controller: :home, action: :workflow_completion_survey%>
         <% else %>
           Workflow 2 Completion Survey
         <% end %>
-      <% elsif @user.timed_completion_survey_status == 1%>
+      <% elsif @user.timed_completion_survey_status%>
         <s>Workflow 1</s>
 
         <h4 style="background-color: #FF0000; color: #00FF00;">COMPLETION KEY: ZXCVBNM </h4>
