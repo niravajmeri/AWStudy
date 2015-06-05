@@ -1,0 +1,55 @@
+<div class="bg-info" style="color: #CC0000; height: 30px; font-size: 12pt; padding: 5px;">Start Time: <%= @task_user.start_time%>. You have total 30 minutes to finish. </div>
+
+<h1>Workflow 1</h1>
+<p><%=@task_user.task.description%><p>
+<p>Attachments: <%=@task_user.task.attach1%></p>
+
+<%#= button_tag 'Start', class: 'btn  btn-success' %>
+
+<h2>Tasks</h2>
+  <dl>
+    <% @task_user.task.subtasks.each_with_index do |subtask, index| %>
+        <dt><%#= subtask.title %>Task <%= index+1%>. </td>
+        <dd><%= subtask.description %>
+              <dl>
+                <% subtask.subtask_questions.each_with_index do |subtask_question, index| %>
+                  <dt>Question <%=index+1%>. </dt>
+                  <dd><%= subtask_question.description%></dd>
+                  <%#= form_for(@subtask_question_user, html: {class: 'form-horizontal'}) do |f| %>
+
+                  <%subtask_question_user = subtask_question.subtask_question_users.where(user: @user).first%>
+                  <% if subtask_question_user != nil%>
+                  <!--<dd>Your answer: <%#= subtask_question_user.description%> -->
+
+                    <%= form_tag({controller: :home, action: :update_user_response}, {class: 'form-horizontal'}) do %>
+                      <%= hidden_field_tag :subtask_question_id, subtask_question.id%>
+                      <%= hidden_field_tag :subtask_question_user_id, subtask_question_user.id%>
+                      <div class="form-group  has-success">
+                        <label  class="col-sm-1 control-label">Answer</label>
+                        <div class="col-sm-10">
+                          <%= text_area_tag :description, subtask_question_user.description, class: 'form-control' %>
+                        </div>
+                        <%= submit_tag 'Update', class: 'col-sm-1 btn  btn-info btn-sm' %>
+                      </div>
+                    <%end%>
+                  
+                  </dd>
+
+                  <%else %>
+                    <%= form_tag({controller: :home, action: :record_user_response}, {class: 'form-horizontal'}) do %>
+                      <%= hidden_field_tag :subtask_question_id, subtask_question.id%>
+                        <div class="form-group  has-warning">
+                          <label  class="col-sm-1 control-label">Answer</label>
+                          <div class="col-sm-10">
+                            <%= text_area_tag :description, nil, class: 'form-control' %>
+                          </div>
+                          <%= submit_tag 'Submit', class: 'col-sm-1 btn btn-primary btn-sm' %>
+                        </div>
+                    <%end%>
+                  <%end%>
+                <% end %>
+              </dl>
+        </dd>
+    <% end %>
+  </dl>
+<%= button_to "Submit Workflow 1", {contoller: :home, action: :update_task_status, task_id: @task.id}, {class: 'btn btn-success'}%>

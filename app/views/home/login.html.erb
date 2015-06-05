@@ -1,5 +1,16 @@
 <h1>Login</h1>
 
+<p class="text-justify">
+
+Thank you for your interest in participating in our study! First, please enter your MTurk ID. Next, we ask that you generate a password of your choosing so that if there is an interruption prior to your completion of the study, you may return at a later time without any loss of your work by entering your unique password. With that being said, please do your best to complete the study in a single session.
+</p>
+
+<p class="text-justify">
+
+Please be aware that you MUST have the capability to access Microsoft Word, Microsoft Excel, and audio files in order to participate in the study. Payment will not be released to individuals who fail to meet this requirement. Thank you!
+
+</p>
+
 <%= form_tag({controller: :home, action: :signin}, {class: 'form-horizontal'}) do %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -15,24 +26,24 @@
 
   <div class="field form-group">
     <%= label_tag :mturk_id, nil, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
+    <div class="col-sm-7">
       <%= text_field_tag :mturk_id, nil, class: 'form-control' %>
     </div>
   </div>
   <div class="field form-group">
     <%= label_tag :password, nil, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
+    <div class="col-sm-7">
       <%= password_field_tag :password, nil, class: 'form-control' %>
     </div>
   </div>
   <div class="field form-group">
     <%= label_tag :email, nil, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
+    <div class="col-sm-7">
       <%= text_field_tag :email, nil, class: 'form-control' %>
     </div>
   </div>
   <div class="actions form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-2 col-sm-7">
       <%= submit_tag "Login", class: 'btn btn-default'  %>
     </div>
   </div>
