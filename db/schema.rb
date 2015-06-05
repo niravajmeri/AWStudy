@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601190753) do
+ActiveRecord::Schema.define(version: 20150605202959) do
 
   create_table "subtask_question_users", force: true do |t|
     t.integer  "subtask_question_id"
@@ -86,6 +86,11 @@ ActiveRecord::Schema.define(version: 20150601190753) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "presurvey_status"
+    t.boolean  "timed_survey_status"
+    t.boolean  "timed_completion_survey_status"
+    t.boolean  "untimed_survey_status"
+    t.boolean  "untimed_completion_survey_status"
   end
 
 end

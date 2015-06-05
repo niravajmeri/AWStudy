@@ -13,11 +13,13 @@ LASAwStudy::Application.routes.draw do
 
   resources :users
 
+  post "update_completion_status" => "home#update_completion_status", :as => "update_completion_status"
   post "update_user_response" => "home#update_user_response", :as => "update_user_response"
   post "record_user_response" => "home#record_user_response", :as => "record_user_response"
   post "signin" => "home#signin", :as => "sigin"
   
-  get "workflow_completion_survey" => "home#workflow_completion_survey", :as => "workflow_completion_survey"
+  get "untimed_completion_survey" => "home#untimed_completion_survey", :as => "untimed_completion_survey"
+  get "timed_completion_survey" => "home#timed_completion_survey", :as => "timed_completion_survey"
   get "pre_participation_survey" => "home#pre_survey", :as => "pre_participation_survey"
   get "welcome" => "home#welcome", :as => "welcome"
   get "logout" => "home#logout", :as => "logout"
