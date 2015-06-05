@@ -15,16 +15,58 @@
 <h2> Links </h2>
 
   <ul>
-    <li><a href="https://docs.google.com/forms/d/1kr5ApRBNPsZmhCLwT22_OmTGYrlT5uu42nKeAsuUq30/viewform" target="_blank">Pre-participation Survey</a></li>
+    <li>
+      <% if @user.presurvey_status == 0%>
+        <%=link_to "Pre-participation Survey", controller: :home, action: :pre_survey%>
+      <% elsif @user.presurvey_status == 1 %>
+        <s>Pre-participation Survey</s>
+      <% end %>
+    </li>
     <li><%#=link_to "Task 1", :controller=> :home, :action => :untimed_survey%>
-      <a href="http://localhost:3000/untimed_survey">Workflow 1<a/>
+      <% if @user.untimed_survey_status == 0 %> 
+        <% if @user.presurvey_status == 1 %>
+          <%=link_to "Workflow 1", controller: :home, action: :untimed_survey%>
+        <% else %>
+          Workflow 1
+        <% end %>
+      <% elsif @user.untimed_survey_status == 1%>
+        <s>Workflow 1</s>
+      <%end%>
+    </li>
+    <li>
+      <% if @user.untimed_completion_survey_status == 0 %> 
+        <% if @user.untimed_survey_status == 1 %>
+          <%=link_to "Workflow 1 Completion Survey", controller: :home, action: :workflow_completion_survey%>
+        <% else %>
+          Workflow 1 Completion Survey
+        <% end %>
+      <% elsif @user.untimed_completion_survey_status == 1%>
+        <s>Workflow 1</s>
+      <%end%>    
+    </li>
+    <li>
+      <% if @user.timed_survey_status == 0 %> 
+        <% if @user.untimed_completion_survey_status == 1 %>
+          <%=link_to "Workflow 2", controller: :home, action: :untimed_survey%>
+        <% else %>
+          Workflow 2
+        <% end %>
+      <% elsif @user.timed_survey_status == 1%>
+        <s>Workflow 2</s>
+      <%end%>
+    </li>
+    <li>
+      <% if @user.timed_completion_survey_status == 0 %> 
+        <% if @user.timed_survey_status == 1 %>
+          <%=link_to "Workflow 2 Completion Survey", controller: :home, action: :workflow_completion_survey%>
+        <% else %>
+          Workflow 2 Completion Survey
+        <% end %>
+      <% elsif @user.timed_completion_survey_status == 1%>
+        <s>Workflow 1</s>
 
+        <h4 style="background-color: #FF0000; color: #00FF00;">COMPLETION KEY: ZXCVBNM </h4>
+
+      <%end%>    
     </li>
-    <li><a href="https://docs.google.com/forms/d/1kr5ApRBNPsZmhCLwT22_OmTGYrlT5uu42nKeAsuUq30/viewform" target="_blank">Workflow 1 Completion Survey</a></li>
-    <li><%#=link_to "Task 2", :controller=> :home, :action => :timed_survey%>
-      <a href="http://localhost:3000/timed_survey">Workflow 2<a/>
-    </li>
-    <li><a href="https://docs.google.com/forms/d/1kr5ApRBNPsZmhCLwT22_OmTGYrlT5uu42nKeAsuUq30/viewform" target="_blank">Workflow 2 Completion Survey</a></li>
-    <li><a href="https://docs.google.com/forms/d/1kr5ApRBNPsZmhCLwT22_OmTGYrlT5uu42nKeAsuUq30/viewform" target="_blank">Feedback</a></li>
-    
   </ul>
