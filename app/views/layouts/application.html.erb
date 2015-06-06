@@ -12,7 +12,23 @@
 
   <div class="container-fluid">
     <div class="row">
-      <% if session[:user_id] != nil and session[:user_id] != 1%>
+      <% if session[:user_id] != nil%>
+        <% if and session[:user_id] == 1%>
+
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li <% if params[:controller] == "tasks"%> class="active" <%end%>><%= link_to "Tasks", controller: :users, action: :index%></li>
+          <li <% if params[:controller] == "subtasks"%> class="active" <%end%>><%= link_to "Subtasks", controller: :subtasks, action: :index%></li>
+          <li <% if params[:controller] == "subtasks"%> class="active" <%end%>><%= link_to "Subtask Questions", controller: :subtask_questions, action: :index%></li>
+          <li <% if params[:controller] == "users"%> class="active" <%end%>><%= link_to "Users", controller: :tasks, action: :index%></li>
+          <li <% if params[:controller] == "task_users"%> class="active" <%end%>><%= link_to "Task Users", controller: :task_users, action: :index%></li>
+          <li <% if params[:controller] == "subtask_question_users"%> class="active" <%end%>><%= link_to "User Answers", controller: :subtask_question_users, action: :index%></li>
+          
+        </ul>
+      </div>
+    
+
+        <% else %>
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
           <li <% if params[:action] == "welcome"%> class="active" <%end%>><%= link_to "Dashboard", controller: :home, action: :welcome%></li>

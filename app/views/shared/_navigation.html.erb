@@ -21,9 +21,16 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Dashboard", controller: :home, action: :welcome%></li>
-            <li><%#= link_to "Logout #{@user.mturk_id}", controller: :home, action: :logout%>
-              <%= link_to "Logout", controller: :home, action: :logout%></li>
+            <% if session[:user_id] != nil)%>
+              <%if User.find(session[user_id].id == 1 %>
+                  <li><%= link_to "Admin dashboard", controller: :tasks, action: :index%></li>
+                  <%= link_to "Logout admin", controller: :home, action: :logout%></li>
+
+                <%else%>
+                  <li><%= link_to "Dashboard", controller: :home, action: :welcome%></li>
+                  <li><%= link_to "Logout #{@user.mturk_id}", controller: :home, action: :logout%>
+              <%end%>
+            <%end%>
           </ul>
 
         </div>

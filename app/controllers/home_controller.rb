@@ -18,7 +18,11 @@ class HomeController < ApplicationController
       if user
         session[:user_id] = user.id
         #:notice => "Logged in!"
-        redirect_to :controller => "home", :action => "welcome"
+        if user.id == 1
+          redirect_to :controller => "tasks"
+        else
+          redirect_to :controller => "home", :action => "welcome"
+        end
       else
         flash.now.alert = "Invalid mturk ID or email or password!"
         redirect_to controller: :home, action: :login
