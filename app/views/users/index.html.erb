@@ -1,11 +1,20 @@
-<h1>Listing users</h1>
+<h1>Users
+  <%= link_to new_user_path, class: 'btn btn-success' do %>
+    <i class="glyphicon glyphicon-plus"></i> New User
+  <% end %>
+</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Mturk</th>
       <th>Password</th>
       <th>Email</th>
+      <th>Presurvey Status</th>
+      <th>Workflow 1 Status</th>
+      <th>Workflow 1 Completion Survey Status</th>
+      <th>Workflow 2 Status</th>
+      <th>Workflow 2 Completion Survey Status</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,9 +27,14 @@
         <td><%= user.mturk_id %></td>
         <td><%= user.password %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= user.presurvey_status%></td>
+        <td><%= user.untimed_survey_status%></td>
+        <td><%= user.untimed_completion_survey_status%></td>
+        <td><%= user.timed_survey_status%></td>
+        <td><%= user.timed_completion_survey_status%></td>
+        <td><%= link_to 'Show', user, class: 'btn btn-primary btn-xs'   %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-info btn-xs'   %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'   %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%#= link_to 'New User', new_user_path %>

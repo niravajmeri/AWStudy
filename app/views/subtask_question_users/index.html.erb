@@ -1,6 +1,10 @@
-<h1>Listing subtask_question_users</h1>
+<h1>Subtask Question Users
+  <%= link_to new_subtask_question_user_path, class: 'btn btn-success' do %>
+    <i class="glyphicon glyphicon-plus"></i> New Subtask Question User
+  <% end %>
+</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Subtask question</th>
@@ -18,9 +22,9 @@
         <td><%= subtask_question_user.subtask_question_id %></td>
         <td><%= subtask_question_user.user_id %></td>
         <td><%= subtask_question_user.description %></td>
-        <td><%= link_to 'Show', subtask_question_user %></td>
-        <td><%= link_to 'Edit', edit_subtask_question_user_path(subtask_question_user) %></td>
-        <td><%= link_to 'Destroy', subtask_question_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', subtask_question_user, class: 'btn btn-primary btn-xs'   %></td>
+        <td><%= link_to 'Edit', edit_subtask_question_user_path(subtask_question_user), class: 'btn btn-info btn-xs'   %></td>
+        <td><%= link_to 'Destroy', subtask_question_user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'   %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Subtask question user', new_subtask_question_user_path %>
+<%#= link_to 'New Subtask question user', new_subtask_question_user_path %>

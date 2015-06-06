@@ -1,6 +1,10 @@
-<h1>Listing task_users</h1>
+<h1>Task Users
+  <%= link_to new_task_user_path, class: 'btn btn-success' do %>
+    <i class="glyphicon glyphicon-plus"></i> New Task User
+  <% end %>
+</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Task</th>
@@ -18,9 +22,9 @@
         <td><%= task_user.task_id %></td>
         <td><%= task_user.user_id %></td>
         <td><%= task_user.status %></td>
-        <td><%= link_to 'Show', task_user %></td>
-        <td><%= link_to 'Edit', edit_task_user_path(task_user) %></td>
-        <td><%= link_to 'Destroy', task_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', task_user, class: 'btn btn-primary btn-xs'   %></td>
+        <td><%= link_to 'Edit', edit_task_user_path(task_user), class: 'btn btn-info btn-xs'   %></td>
+        <td><%= link_to 'Destroy', task_user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'   %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Task user', new_task_user_path %>
+<%#= link_to 'New Task user', new_task_user_path %>
