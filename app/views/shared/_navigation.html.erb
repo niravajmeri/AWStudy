@@ -21,10 +21,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <% if session[:user_id] != nil)%>
-              <%if User.find(session[user_id].id == 1 %>
+            <% if session[:user_id] != nil%>
+              <%if session[:user_id] == 1 %>
                   <li><%= link_to "Admin dashboard", controller: :tasks, action: :index%></li>
-                  <%= link_to "Logout admin", controller: :home, action: :logout%></li>
+                  <li><%= link_to "Logout admin", controller: :home, action: :logout%></li>
 
                 <%else%>
                   <li><%= link_to "Dashboard", controller: :home, action: :welcome%></li>
