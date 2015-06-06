@@ -7,7 +7,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Subtask</th>
+      <th>Subtask ID</th>
+      <th>Subtask Title</th>
       <th>Description</th>
       <th></th>
       <th></th>
@@ -19,6 +20,7 @@
     <% @subtask_questions.each do |subtask_question| %>
       <tr>
         <td><%= subtask_question.subtask_id %></td>
+        <td><%= subtask_question.subtask.title %></td>
         <td><%= subtask_question.description %></td>
         <td><%= link_to 'Show', subtask_question, class: 'btn btn-primary btn-xs' %></td>
         <td><%= link_to 'Edit', edit_subtask_question_path(subtask_question), class: 'btn btn-info btn-xs' %></td>

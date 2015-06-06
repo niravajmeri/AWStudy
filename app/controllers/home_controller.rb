@@ -66,27 +66,32 @@ class HomeController < ApplicationController
     @user = User.find(session[:user_id])
 
     if(params[:task] == "presurvey" and params[:key] == "key")
-      @user.presurvey_status = 1
+      #@user.presurvey_status = 1
+      @user.update_attribute("presurvey_status", 1)
     elsif(params[:task] == "untimed_survey")
-      @user.untimed_survey_status = 1
+      #@user.untimed_survey_status = 1
+      @user.update_attribute("untimed_survey_status", 1)
     elsif(params[:task] == "untimed_completion_survey" and params[:key] == "untimedkey")
-      @user.untimed_completion_survey_status = 1
+      #@user.untimed_completion_survey_status = 1
+      @user.update_attribute("untimed_completion_survey_status", 1)
     elsif(params[:task] == "timed_survey")
-      @user.timed_survey_status = 1
+      #@user.timed_survey_status = 1
+      @user.update_attribute("timed_survey_status", 1)
     elsif(params[:task] == "timed_completion_survey" and params[:key] == "timedkey")
-      @user.timed_completion_survey_status = 1
+      #@user.timed_completion_survey_status = 1
+      @user.update_attribute("timed_completion_survey_status", 1)
     end
-    @user.save
+    
+    #@user.save
 
-    redirect_to :controller => "home", :action => "welcome"
-
+    redirect_to controller: :home, action: :welcome
   end
 
   def timed_survey
 
     #@task = Task.find(2)
     @user = User.find(session[:user_id])
-    @task_user = @user.task_users.where("is_timed == 1").first
+    @task_user = @user.task_users.where("is_timed = 1").first
     if @task_user.start_time == nil
       @task_user.start_time = Time.current
       @task_user.save
@@ -99,7 +104,7 @@ class HomeController < ApplicationController
 
     #@task = Task.find(1)
     @user = User.find(session[:user_id])
-    @task_user = @user.task_users.where("is_timed == 0").first
+    @task_user = @user.task_users.where("is_timed = 0").first
     if @task_user.start_time == nil
       @task_user.start_time = Time.current
       @task_user.save

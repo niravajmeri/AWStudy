@@ -14,7 +14,8 @@
   <div class="field form-group">
     <%= f.label :task_id, class: 'col-sm-2 control-label'  %>
     <div class="col-sm-10">
-      <%= f.number_field :task_id, class: 'form-control' %>
+      <%#= f.number_field :task_id, class: 'form-control' %>
+      <%= f.collection_select :task_id, Task.order(:title),:id,:title, {prompt: "Select a task"}, {class: "form-control"} %>
     </div>
   </div>
   <div class="field form-group">
