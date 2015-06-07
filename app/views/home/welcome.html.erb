@@ -36,18 +36,18 @@
     <li>
       <% if !@user.untimed_completion_survey_status%> 
         <% if @user.untimed_survey_status%>
-          <%=link_to "Workflow 1 Completion Survey", controller: :home, action: :workflow_completion_survey%>
+          <%=link_to "Workflow 1 Completion Survey", controller: :home, action: :untimed_completion_survey%>
         <% else %>
           Workflow 1 Completion Survey
         <% end %>
-      <% elsif @user.untimed_completion_survey_status1%>
+      <% elsif @user.untimed_completion_survey_status%>
         <s>Workflow 1</s>
       <%end%>    
     </li>
     <li>
       <% if !@user.timed_survey_status%> 
         <% if @user.untimed_completion_survey_status%>
-          <%=link_to "Workflow 2", controller: :home, action: :untimed_survey%>
+          <%=link_to "Workflow 2", controller: :home, action: :timed_survey%>
         <% else %>
           Workflow 2
         <% end %>
@@ -58,7 +58,7 @@
     <li>
       <% if !@user.timed_completion_survey_status%> 
         <% if @user.timed_survey_status%>
-          <%=link_to "Workflow 2 Completion Survey", controller: :home, action: :workflow_completion_survey%>
+          <%=link_to "Workflow 2 Completion Survey", controller: :home, action: :timed_completion_survey%>
         <% else %>
           Workflow 2 Completion Survey
         <% end %>

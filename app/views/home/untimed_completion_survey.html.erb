@@ -7,7 +7,7 @@
 <p>On completion of the survey, you will receive a completion key. Enter the completion key below and click submit.</p>
 
 <%= form_tag({controller: :home, action: :update_completion_status}, {class: 'form-horizontal'}) do %>
-                      <%= hidden_field_tag :task, "untimed_survey"%>
+                      <%= hidden_field_tag :task, "untimed_completion_survey"%>
 <div class="form-group  has-success">
   <label  class="col-sm-2 control-label">Completion Key</label>
   <div class="col-sm-9">
