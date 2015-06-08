@@ -1,7 +1,22 @@
 <h1>Workflow 2 Completion Survey</h1>
 <p>Please complete the workflow completion survey by clicking the link below.</p>
   <ul>
-    <li><a href="https://docs.google.com/forms/d/1kr5ApRBNPsZmhCLwT22_OmTGYrlT5uu42nKeAsuUq30/viewform" target="_blank">Workflow 2 Completion Survey</a></li>
+    <li>
+    	<a 
+    		<%if @task_user.task_id == 1 %>
+    		href="https://docs.google.com/forms/d/1sXGSTxr6E99HsLs3wtgUesb9O_mn-MAQ-C1aNqzIxqY/viewform"
+    		<%elsif @task_user.task_id == 2 %>
+    		href="https://docs.google.com/forms/d/15SonHF9Fcj6QwDI-RH1yHzcdTj23_pP3kZpX_5K7I28/viewform"
+    		<%elsif @task_user.task_id == 3 %>
+    		href="https://docs.google.com/forms/d/10djvdXbb48e4FEMEy2R6q1SQu0M5kWwecDeO_a0WwZM/viewform"
+    		<%elsif @task_user.task_id == 4 %>
+    		href="https://docs.google.com/forms/d/1Hy0CJLuzCvv2JoFkLxPHTgFWNy3CnYbujfzJTs6TCh8/viewform"
+    		<%elsif @task_user.task_id == 5 %>
+    		href="https://docs.google.com/forms/d/1GTstm1bJgj_X9VePLd6iLOk9io_gefQNhaOM5jvnxHU/viewform"
+    		<%end%>
+    	 target="_blank">
+    	Workflow 2 Completion Survey</a>
+    </li>
   </ul>
 
 <p>On completion of the survey, you will receive a completion key. Enter the completion key below and click submit.</p>
@@ -12,6 +27,7 @@
   <label  class="col-sm-2 control-label">Completion Key</label>
   <div class="col-sm-9">
     <%= text_field_tag :key, nil, class: 'form-control' %>
+    <%= hidden_field_tag :task_id, @task_user.task_id %>
   </div>
   <%= submit_tag 'Submit', class: 'col-sm-1 btn btn-sm' %>
 </div>

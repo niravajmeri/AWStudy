@@ -1,4 +1,6 @@
-<div class="bg-info" style="color: #CC0000; height: 30px; font-size: 12pt; padding: 5px;">Start Time: <%= @task_user.start_time%>. You have total 30 minutes to finish. </div>
+<div class="bg-info" style="color: #CC0000; height: 30px; font-size: 12pt; padding: 5px;">
+  Start Time: <%= @task_user.start_time.localtime%>. You have total 30 minutes to finish. 
+</div>
 
 <h1>Workflow 2</h1>
 <p class="text-justify"><%=@task_user.task.description%><p>
@@ -52,4 +54,4 @@
         </dd>
     <% end %>
   </dl>
-<%= button_to "Submit Workflow 2", {contoller: :home, action: :update_completion_status, task_id: @task_user.task_id, task: "timed_survey"}, {class: 'btn btn-success'}%>
+<%= button_to "Submit Workflow 2", {contoller: :home, action: :update_completion_status, task_user_id: @task_user.id, task: "timed_survey"}, {class: 'btn btn-success'}%>

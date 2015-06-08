@@ -29,6 +29,47 @@
       <%= f.text_field :email, class: 'form-control' %>
     </div>
   </div>
+  <div class="field form-group">
+    
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <%= f.check_box :presurvey_status%>
+        <%= f.label :presurvey_status%>
+      </div>
+    </div>
+  </div>
+  <div class="field form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <%= f.check_box :untimed_survey_status%>
+        <%= f.label :untimed_survey_status%>
+      </div>
+    </div>
+  </div>
+  <div class="field form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <%= f.check_box :untimed_completion_survey_status%>
+        <%= f.label :untimed_completion_survey_status%>
+      </div>
+    </div>
+  </div>
+  <div class="field form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <%= f.check_box :timed_survey_status%>
+        <%= f.label :timed_survey_status%>
+      </div>
+    </div>
+  </div>
+  <div class="field form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <%= f.check_box :timed_completion_survey_status%>
+        <%= f.label :timed_completion_survey_status%>
+    </div>
+    </div>
+  </div>  
   <div class="actions form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit "Submit", class: 'btn btn-default'  %>

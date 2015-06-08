@@ -63,7 +63,7 @@
               Workflow 2
             </a>        
           </li>
-          <li <% if params[:controller] == "home" and  params[:action] == "timed_completion_survey"%> class="" <%end%>>
+          <li <% if params[:controller] == "home" and  params[:action] == "timed_completion_survey"%> class="active" <%end%>>
             <%#=link_to "Workflow 2 Completion Survey", controller: :home, action: :timed_completion_survey%>
             <a href="#" <% if @user.timed_completion_survey_status %> style="text-decoration:line-through" <%end%>>
               Workflow 2 Completion Survey
@@ -75,6 +75,8 @@
       <% end %>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <%#= params[:controller] + "_" + params[:action] %>
+          <%= flash_messages %>
+          The time is <%= Time.current %>
           <%= yield %>
       </div>
     </div>
