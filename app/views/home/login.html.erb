@@ -25,23 +25,24 @@ Please be aware that you MUST have the capability to access Microsoft Word, Micr
   <% end %>
 
   <div class="field form-group">
-    <%= label_tag :mturk_id, nil, class: 'col-sm-2 control-label' %>
+    <%= label_tag :Your_mturk_ID, nil, class: 'col-sm-2 control-label' %>
     <div class="col-sm-7">
       <%= text_field_tag :mturk_id, nil, class: 'form-control' %>
     </div>
   </div>
   <div class="field form-group">
-    <%= label_tag :password, nil, class: 'col-sm-2 control-label' %>
+    <%= label_tag :your_secret_key, nil, class: 'col-sm-2 control-label' %>
     <div class="col-sm-7">
-      <%= password_field_tag :password, nil, class: 'form-control' %>
+      <%= password_field_tag :password, nil, class: 'form-control' %> 
+     Here for the first time? Enter any secret key. You will need this key to login again.
     </div>
   </div>
-  <div class="field form-group">
-    <%= label_tag :email, nil, class: 'col-sm-2 control-label' %>
+  <!--<div class="field form-group">
+    <%#= label_tag :email, nil, class: 'col-sm-2 control-label' %>
     <div class="col-sm-7">
-      <%= text_field_tag :email, nil, class: 'form-control' %>
+      <%#= text_field_tag :email, nil, class: 'form-control' %>
     </div>
-  </div>
+  </div>-->
   <div class="actions form-group">
     <div class="col-sm-offset-2 col-sm-7">
       <%= submit_tag "Login", class: 'btn btn-default'  %>

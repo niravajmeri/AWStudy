@@ -14,14 +14,15 @@ class HomeController < ApplicationController
     user = User.exist(params[:mturk_id])
 
     if user
-      user = User.authenticate(params[:mturk_id], params[:email], params[:password])
+      #user = User.authenticate(params[:mturk_id], params[:email], params[:password])
+      user = User.authenticate(params[:mturk_id], params[:password])
       if user
         session[:user_id] = user.id
         flash[:notice] = "Welcome back!"
         if user.id == 1
           redirect_to :controller => "tasks"
         else
-          redirect_to :controller => "home", :action => "welcome"
+          redirect_to :controller => "home", :action => :welcome
         end
       else
         flash[:error] = "Invalid mturk ID or email or password!"
@@ -31,20 +32,28 @@ class HomeController < ApplicationController
       user = User.new
       user.mturk_id = params[:mturk_id]
       user.password = params[:password]
-      user.email = params[:email]
+      #user.email = params[:email]
       user.presurvey_status = 0
       user.untimed_survey_status = 0 
       user.untimed_completion_survey_status = 0
       user.timed_survey_status = 0 
       user.timed_completion_survey_status = 0
-      user.save
+	
+      p user.mturk_id
+      p user.password
+	
+      if user.save
 
       session[:user_id] = user.id
 
       initialize_user_response
 
       flash[:notice] = "Logged in!"
-      redirect_to :controller => "home", :action => "welcome"
+      redirect_to :controller => "home", :action => :welcome
+      else
+        flash[:alert] = "Some error! We too hate this but please try again. If problem persists, contact the administrator."
+        redirect_to :controller => "home", :action => :login
+      end
 
     end
 
@@ -70,6 +79,7 @@ class HomeController < ApplicationController
 
   def update_completion_status
     @user = User.find(session[:user_id])
+    redirect_to_action = "welcome"
 
     if params[:task] == "presurvey"
       #@user.presurvey_status = 1
@@ -78,7 +88,8 @@ class HomeController < ApplicationController
         @user.update_attribute("presurvey_status", 1)
       else
         flash[:error] = "Invalid key! Complete the pre-participation survey for the key."
-        redirect_to controller: :home, action: :pre_survey
+        redirect_to_action = "pre_survey"
+        #redirect_to controller: :home, action: :pre_survey
       end
     elsif params[:task] == "untimed_survey"
       @task_user = TaskUser.find(params[:task_user_id])
@@ -90,24 +101,25 @@ class HomeController < ApplicationController
       @user.update_attribute("untimed_survey_status", 1)
     elsif params[:task] == "untimed_completion_survey"
       #@user.untimed_completion_survey_status = 1
-      if params[:task_id] == 1 and params[:key] == "w6"
+      if params[:task_id] == "1" and params[:key] == "w6"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == 2 and params[:key] == "w7"
+      elsif  params[:task_id] == "2" and params[:key] == "w7"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == 3 and params[:key] == "w8"
+      elsif  params[:task_id] == "3" and params[:key] == "w8"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == 4 and params[:key] == "w9"
+      elsif  params[:task_id] == "4" and params[:key] == "w9"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == 5 and params[:key] == "w10"
+      elsif  params[:task_id] == "5" and params[:key] == "w10"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
       else
         flash[:error] = "Invalid key! Complete the Workflow 1 Completion Survey for the key."
-        redirect_to controller: :home, action: :untimed_completion_survey
+        #redirect_to controller: :home, action: :untimed_completion_survey
+        redirect_to_action = "untimed_completion_survey"  
       end
 
     elsif params[:task] == "timed_survey"
@@ -121,30 +133,30 @@ class HomeController < ApplicationController
       @user.update_attribute("timed_survey_status", 1)
     elsif params[:task] == "timed_completion_survey"
       #@user.timed_completion_survey_status = 1
-      if params[:task_id] == 1 and params[:key] == "w6"
+      if params[:task_id] == "1" and params[:key] == "w6"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == 2 and params[:key] == "w7"
+      elsif  params[:task_id] == "2" and params[:key] == "w7"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == 3 and params[:key] == "w8"
+      elsif  params[:task_id] == "3" and params[:key] == "w8"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == 4 and params[:key] == "w9"
+      elsif  params[:task_id] == "4" and params[:key] == "w9"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == 5 and params[:key] == "w10"
+      elsif  params[:task_id] == "5" and params[:key] == "w10"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
       else
         flash[:error] = "Invalid key! Complete the Workflow 2 Completion Survey for the key."
-        redirect_to controller: :home, action: :timed_completion_survey        
+        #redirect_to controller: :home, action: :timed_completion_survey        
+        redirect_to_action = "timed_completion_survey"
       end
     end
     
     #@user.save
-
-    redirect_to controller: :home, action: :welcome
+    redirect_to controller: :home, action: redirect_to_action
   end
 
   def timed_survey
