@@ -28,6 +28,7 @@
   <div class="col-sm-9">
     <%= text_field_tag :key, nil, class: 'form-control' %>
     <%= hidden_field_tag :task_id, @task_user.task_id %>
+    <%= hidden_field_tag :task, "untimed_completion_survey"%>
   </div>
   <%= submit_tag 'Submit', class: 'col-sm-1 btn btn-sm' %>
 </div>
