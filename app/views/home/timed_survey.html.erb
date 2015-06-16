@@ -6,15 +6,16 @@
 <div class="bg-info" style="color: #d9534f; font-size: 12pt; padding: 5px; font-weight: bold;">
 <!--Start Time: <%#= @task_user.start_time.localtime%>.-->
 <ul>
-<li>Press "Submit" to record answer for each question. </li>
+<li>Press "Save" to record answer for each question. All unsaved anwer will be lost.</li>
 <li>To update an answer, change the answer in the textbox and press "Update". </li>
-<li>Once you have answered all questions confidently, press "Submit Workflow 1". </li>
+<li>Once you have answered all questions confidently, press "Submit Workflow 2". </li>
 </ul>
 </div>
 
 <h1>Workflow 2</h1>
 <p class="text-justify"><%=@task_user.task.description%><p>
-<ul> <h2>Data Sources:</h2>
+<h2>Data Sources</h2>
+<ul>
 <li><a href="<%=@task_user.task.attach1%>" target="_blank">Source 1</a></li>
 <li><a href="<%=@task_user.task.attach2%>" target="_blank">Source 2</a></li>
 <li><a href="<%=@task_user.task.attach3%>" target="_blank">Source 3</a></li>
@@ -45,6 +46,7 @@
                         <label  class="col-sm-2 control-label">Update Answer</label>
                         <div class="col-sm-9">
                           <%= text_area_tag :description, subtask_question_user.description, class: 'form-control' %>
+                          <b><i>* Press "Update" to save your updated answer.</i></b>
                         </div>
                         <%= submit_tag 'Update', class: 'col-sm-1 btn  btn-info btn-sm' %>
                       </div>
@@ -53,20 +55,23 @@
                   </dd>
 
                   <%else %>
+                  <dd><b>Your Answer.</b> <i class="bg-danger">No answer saved.</i>
                     <%= form_tag({controller: :home, action: :record_user_response}, {class: 'form-horizontal'}) do %>
                       <%= hidden_field_tag :subtask_question_id, subtask_question.id%>
                         <div class="form-group  has-warning">
                           <label  class="col-sm-1 control-label">Answer</label>
                           <div class="col-sm-10">
                             <%= text_area_tag :description, nil, class: 'form-control' %>
+                            <b><i>* Press "Save" to save your answer to this question.</i></b>
                           </div>
-		                      <%= submit_tag 'Submit', class: 'col-sm-1 btn btn-primary btn-sm' %>
+		          <%= submit_tag 'Save', class: 'col-sm-1 btn btn-primary btn-sm' %>
                         </div>
                     <%end%>
+                  </dd> 
                   <%end%>
                 <% end %>
               </dl>
         </dd>
     <% end %>
   </dl>
-<%= button_to "Submit Workflow 2", {contoller: :home, action: :update_completion_status, task_user_id: @task_user.id, task: "timed_survey"}, {class: 'btn btn-success'}%>
+<%= button_to "Submit Workflow 2", {contoller: :home, action: :update_completion_status, task_user_id: @task_user.id, task: "timed_survey"}, {class: 'btn btn-success', data: {confirm: "Have you verified all your answers? You will not be able to modify your answers for Workflow 2 if you say Yes. Are you sure you want to continue? "}}%>
