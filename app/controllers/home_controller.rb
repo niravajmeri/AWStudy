@@ -202,7 +202,16 @@ class HomeController < ApplicationController
     @subtask_question_user.subtask_question_id = params[:subtask_question_id]
     @subtask_question_user.description = params[:description]
     if @subtask_question_user.save
-      redirect_to controller: :home, action: :timed_survey
+      flash[:notice] = "Answer recorded!"
+      if params[:task] == "timed_survey"
+        redirect_to controller: :home, action: :timed_survey
+      elsif params[:task] == "untimed_survey"
+        redirect_to controller: :home, action: :untimed_survey
+      else
+        redirect_to controller: :home, action: :welcome
+      end
+    else
+      flash[:error] = "Error recording the answer! Please try again."
     end
 
   end
@@ -214,7 +223,16 @@ class HomeController < ApplicationController
     @subtask_question_user.subtask_question_id = params[:subtask_question_id]
     @subtask_question_user.description = params[:description]
     if @subtask_question_user.save
-      redirect_to controller: :home, action: :timed_survey
+      flash[:notice] = "Answer updated!"
+      if params[:task] == "timed_survey"
+        redirect_to controller: :home, action: :timed_survey
+      elsif params[:task] == "untimed_survey"
+        redirect_to controller: :home, action: :untimed_survey
+      else
+        redirect_to controller: :home, action: :welcome
+      end
+    else
+      flash[:error] = "Error updating the answer! Please try again."
     end
 
   end
