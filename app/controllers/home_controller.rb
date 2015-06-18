@@ -25,7 +25,7 @@ class HomeController < ApplicationController
           redirect_to :controller => "home", :action => :welcome
         end
       else
-        flash[:error] = "Invalid mturk ID or email or password!"
+        flash[:error] = "Invalid secret key!"
         redirect_to controller: :home, action: :login
       end
     else
@@ -48,7 +48,7 @@ class HomeController < ApplicationController
 
       initialize_user_response
 
-      flash[:notice] = "Logged in!"
+      flash[:notice] = "Logged in! mturk ID: #{user.mturk_id}, Secret Key: #{user.password}"
       redirect_to :controller => "home", :action => :welcome
       else
         flash[:alert] = "Some error! We too hate this but please try again. If problem persists, contact the administrator."

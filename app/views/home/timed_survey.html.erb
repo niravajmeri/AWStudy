@@ -1,6 +1,6 @@
 <div class="bg-info" style="background-color: #d9534f; color: #ffd800 ; font-size: 12pt; padding: 5px; font-weight: bold;">
   For bonus, answer all questions correctly and "Submit Workflow 2" in 30 minutes. <br/>
-  Start Time: <%= @task_user.start_time.localtime%>.
+  Start Time: <%= @task_user.start_time.localtime.strftime("%I:%M %p. %b %d, %Y (%z)")%>
 </div>
 <br/>
 <div class="bg-info" style="color: #d9534f; font-size: 12pt; padding: 5px; font-weight: bold;">
