@@ -10,7 +10,7 @@
 <%= form_tag({controller: :home, action: :update_completion_status}, {class: 'form-horizontal'}) do %>
                       <%= hidden_field_tag :task, "presurvey"%>
 <div class="form-group  has-success">
-  <label  class="col-sm-2 control-label">Completion Key</label>
+  <label  class="col-sm-2 control-label">Pre-participation Completion Key</label>
   <div class="col-sm-9">
     <%= text_field_tag :key, nil, class: 'form-control' %>
   </div>

@@ -14,6 +14,11 @@
 
 <h1>Workflow 2</h1>
 <p class="text-justify"><%=@task_user.task.description%><p>
+  
+<p class="text-justify">
+  <b>IMPORTANT:</b> You MUST select “Save” immediately after EVERY response provided. Failure to do so will result in loss of answers. 
+</p>
+
 <h2>Data Sources</h2>
 <ul>
 <li><a href="<%=@task_user.task.attach1%>" target="_blank">Source 1</a></li>
@@ -76,4 +81,4 @@
         </dd>
     <% end %>
   </dl>
-<%= button_to "Submit Workflow 2", {contoller: :home, action: :update_completion_status, task_user_id: @task_user.id, task: "timed_survey"}, {class: 'btn btn-success', data: {confirm: "Have you verified all your answers? You will not be able to modify your answers for Workflow 2 if you say Yes. Are you sure you want to continue? "}}%>
+<%= button_to "Submit Workflow 2", {contoller: :home, action: :update_completion_status, task_user_id: @task_user.id, task: "timed_survey"}, {class: 'btn btn-success', data: {confirm: "Have you checked over ALL your answers to verify they were recorded properly? If so, select OK. If you believe that your answers were not recorded properly, select Cancel and reenter your answers, remembering to select Save after EVERY answer before final Workflow submission."}}%>

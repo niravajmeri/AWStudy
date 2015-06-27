@@ -2,7 +2,7 @@
 
 <p class="text-justify">
 
-Thank you for your interest in participating in our study! First, please enter your MTurk ID. Next, we ask that you generate a password of your choosing so that if there is an interruption prior to your completion of the study, you may return at a later time without any loss of your work by entering your unique password. With that being said, please do your best to complete the study in a single session.
+Thank you for your interest in participating in our study! First, please enter your Amazon MTurk Worker ID. Next, we ask that you generate a password of your choosing so that if there is an interruption prior to your completion of the study, you may return at a later time without any loss of your work by entering your unique password. With that being said, please do your best to complete the study in a single session.
 </p>
 
 <p class="text-justify">
@@ -25,16 +25,16 @@ Please be aware that you MUST have the capability to access Microsoft Word, Micr
   <% end %>
 
   <div class="field form-group">
-    <%= label_tag :Your_mturk_ID, nil, class: 'col-sm-2 control-label' %>
+    <%= label_tag "Amazon Mechanical Turk Worker ID", nil, class: 'col-sm-2 control-label' %>
     <div class="col-sm-7">
       <%= text_field_tag :mturk_id, nil, class: 'form-control' %>
     </div>
   </div>
   <div class="field form-group">
-    <%= label_tag :your_secret_key, nil, class: 'col-sm-2 control-label' %>
+    <%= label_tag "Self-generated password", nil, class: 'col-sm-2 control-label' %>
     <div class="col-sm-7">
       <%= password_field_tag :password, nil, class: 'form-control' %> 
-     Here for the first time? Enter any secret key. You will need this key to login again.
+     Here for the first time? Enter any self-generated password. You will need this password to login again.
     </div>
   </div>
   <!--<div class="field form-group">
