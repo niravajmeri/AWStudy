@@ -80,10 +80,15 @@ class HomeController < ApplicationController
   def update_completion_status
     @user = User.find(session[:user_id])
     redirect_to_action = "welcome"
+    
+    # All workflow completion codes are of length 6. Pre survey and MturkHit are of length 8.
+    # Code Format for Pre Survey: <Run#>preSta<Run# in alphabet> e.g., for the first run it will be 1preStaA
+    # Code Format for workflows: <Run#><Task initial><Workflow# in word><Workflow #in alphabet> e.g., for the first run of the task 1, it will be 1wSixA
+    # Code Format for MTurk Hit: <Run#><posFin><Run# in alphabet> e.g., for the first run, it will be 1posFinZ
 
     if params[:task] == "presurvey"
       #@user.presurvey_status = 1
-      if params[:key] == "start"
+      if params[:key] == "1preStaA"
         flash[:notice] = "Thank you for completing the pre-participation survey. Proceed to Workflow 1 by clicking its link under the Links section!"
         @user.update_attribute("presurvey_status", 1)
       else
@@ -101,19 +106,19 @@ class HomeController < ApplicationController
       @user.update_attribute("untimed_survey_status", 1)
     elsif params[:task] == "untimed_completion_survey"
       #@user.untimed_completion_survey_status = 1
-      if params[:task_id] == "1" and params[:key] == "w6"
+      if params[:task_id] == "1" and params[:key] == "1wSixA"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == "2" and params[:key] == "w7"
+      elsif  params[:task_id] == "2" and params[:key] == "1wSevB"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == "3" and params[:key] == "w8"
+      elsif  params[:task_id] == "3" and params[:key] == "1wEigC"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == "4" and params[:key] == "w9"
+      elsif  params[:task_id] == "4" and params[:key] == "1wNinD"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == "5" and params[:key] == "w10"
+      elsif  params[:task_id] == "5" and params[:key] == "1wTenE"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
       else
@@ -133,19 +138,19 @@ class HomeController < ApplicationController
       @user.update_attribute("timed_survey_status", 1)
     elsif params[:task] == "timed_completion_survey"
       #@user.timed_completion_survey_status = 1
-      if params[:task_id] == "1" and params[:key] == "w6"
+      if params[:task_id] == "1" and params[:key] == "1wSixA"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == "2" and params[:key] == "w7"
+      elsif  params[:task_id] == "2" and params[:key] == "1wSevB"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == "3" and params[:key] == "w8"
+      elsif  params[:task_id] == "3" and params[:key] == "1wEigC"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == "4" and params[:key] == "w9"
+      elsif  params[:task_id] == "4" and params[:key] == "1wNinD"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == "5" and params[:key] == "w10"
+      elsif  params[:task_id] == "5" and params[:key] == "1wTenE"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
       else
