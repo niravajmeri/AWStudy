@@ -31,10 +31,10 @@
 		<dd><%= subtask_question.description%></dd>
 
         <%subtask_question_user = subtask_question.subtask_question_users.where(user: @user).first%>
-		  <% if subtask_question_user != nil%>
-            <dd><b>Answer.</b> <i><%= subtask_question_user.description%></i></dd>
-          <% end %>
+		<% if subtask_question_user != nil%>
+          <dd><b>Answer.</b> <i><%= subtask_question_user.description%></i></dd>
         <% end %>
+        
     <% end %>
 <% end %>
 </dl>
@@ -57,10 +57,10 @@
 		<dd><%= subtask_question.description%></dd>
 
         <%subtask_question_user = subtask_question.subtask_question_users.where(user: @user).first%>
-		  <% if subtask_question_user != nil%>
-            <dd><b>Answer.</b> <i><%= subtask_question_user.description%></i></dd>
-          <% end %>
+		<% if subtask_question_user != nil%>
+          <dd><b>Answer.</b> <i><%= subtask_question_user.description%></i></dd>
         <% end %>
+
     <% end %>
 <% end %>
 </dl>
