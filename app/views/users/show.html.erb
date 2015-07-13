@@ -6,14 +6,25 @@
 </p>
 
 <p>
+  <strong>Presurvey Status:</strong> <%= user.presurvey_status%><br/>
+  <strong>Untimed Survey Status:</strong> <%= user.untimed_survey_status%></br>
+  <strong>Untimed Completion Survey Status:</strong> <%= user.untimed_completion_survey_status%></br>
+  <strong>Timed Survey Status:</strong> <%= user.timed_survey_status%></br>
+  <strong>Timed Completion Survey Status:</strong><%= user.timed_completion_survey_status%></br>
+</p>
+
+<hr/>
+<!--
+<p>
   <strong>Password:</strong>
-  <%= @user.password %>
+  <%#= @user.password %>
 </p>
 
 <p>
   <strong>Email:</strong>
-  <%= @user.email %>
+  <%#= @user.email %>
 </p>
+-->
 
 <p>
 	<strong>Workflow 1:</strong> <%= @untimed_task_user.task.title %><br/>
@@ -21,26 +32,22 @@
 	End Time: <%= @untimed_task_user.end_time%>
 </p>
 
-<dl>
 <% @untimed_task_user.task.subtasks.each_with_index do |subtask, index| %>
-	<dt><%#= subtask.title %>Task <%= index+1%>. <%= subtask.description %></td>
-    <dd>
-	<dl>
+	<p><strong>Task <%= index+1%>. </strong> <%= subtask.description %> <br/>
+
     <% subtask.subtask_questions.each_with_index do |subtask_question, index| %>
-		<dt>Question <%=index+1%>. <%= subtask_question.description%></dt>
+		<strong>Question <%=index+1%>. <strong> <%= subtask_question.description%> </br/>
 
         <%subtask_question_user = subtask_question.subtask_question_users.where(user: @user).first%>
-		<dd><b>Answer. </b> 
+		<strong>Answer. </strong> 
 		<% if subtask_question_user != nil%>
           <i><%= subtask_question_user.description%></i>
         <% end %>
-    	</dd>
+    	</br/>
         
     <% end %>
-	</dl>
-    </dd>
+	</p>
 <% end %>
-</dl>
 
 <hr/>
 
@@ -50,26 +57,22 @@
 	End Time: <%= @timed_task_user.end_time %>
 </p>
 
-<dl>
 <% @timed_task_user.task.subtasks.each_with_index do |subtask, index| %>
-	<dt><%#= subtask.title %>Task <%= index+1%>. <%= subtask.description %></td>
-    <dd>
-	<dl>
+	<p><strong>Task <%= index+1%>. </strong> <%= subtask.description %> <br/>
+
     <% subtask.subtask_questions.each_with_index do |subtask_question, index| %>
-		<dt>Question <%=index+1%>. <%= subtask_question.description%></dt><%= subtask_question.description%>
+		<strong>Question <%=index+1%>. <strong> <%= subtask_question.description%> </br/>
 
         <%subtask_question_user = subtask_question.subtask_question_users.where(user: @user).first%>
-		<dd><b>Answer. </b> 
+		<strong>Answer. </strong> 
 		<% if subtask_question_user != nil%>
           <i><%= subtask_question_user.description%></i>
         <% end %>
-        </dd>
-
+    	</br/>
+        
     <% end %>
-    </dl>
-    </dd>
+	</p>
 <% end %>
-</dl>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
