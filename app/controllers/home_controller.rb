@@ -106,19 +106,19 @@ class HomeController < ApplicationController
       @user.update_attribute("untimed_survey_status", 1)
     elsif params[:task] == "untimed_completion_survey"
       #@user.untimed_completion_survey_status = 1
-      if params[:task_id] == "1" and params[:key] == "1wSixA"
+      if params[:task_id] == "1" and params[:key] == "2wSix2"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == "2" and params[:key] == "1wSevB"
+      elsif  params[:task_id] == "2" and params[:key] == "2wSev2"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == "3" and params[:key] == "1wEigC"
+      elsif  params[:task_id] == "3" and params[:key] == "2wEig2"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == "4" and params[:key] == "1wNinD"
+      elsif  params[:task_id] == "4" and params[:key] == "2wNin2"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
-      elsif  params[:task_id] == "5" and params[:key] == "1wTenE"
+      elsif  params[:task_id] == "5" and params[:key] == "2wTen2"
         @user.update_attribute("untimed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
       else
@@ -138,19 +138,19 @@ class HomeController < ApplicationController
       @user.update_attribute("timed_survey_status", 1)
     elsif params[:task] == "timed_completion_survey"
       #@user.timed_completion_survey_status = 1
-      if params[:task_id] == "1" and params[:key] == "1wSixA"
+      if params[:task_id] == "1" and params[:key] == "2wSix2"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == "2" and params[:key] == "1wSevB"
+      elsif  params[:task_id] == "2" and params[:key] == "2wSev2"
+        @user.update_attribute("timed_completion_survey_status", 1)
+        flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note2wSev2 the COMPLETION KEY highlighted below."
+      elsif  params[:task_id] == "3" and params[:key] == "2wEig2"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == "3" and params[:key] == "1wEigC"
+      elsif  params[:task_id] == "4" and params[:key] == "2wNin2"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == "4" and params[:key] == "1wNinD"
-        @user.update_attribute("timed_completion_survey_status", 1)
-        flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
-      elsif  params[:task_id] == "5" and params[:key] == "1wTenE"
+      elsif  params[:task_id] == "5" and params[:key] == "2wTen2"
         @user.update_attribute("timed_completion_survey_status", 1)
         flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
       else
