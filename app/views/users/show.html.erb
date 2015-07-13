@@ -23,19 +23,22 @@
 
 <dl>
 <% @untimed_task_user.task.subtasks.each_with_index do |subtask, index| %>
-	<dt><%#= subtask.title %>Task <%= index+1%>. </td>
-    <dd><%= subtask.description %>
+	<dt><%#= subtask.title %>Task <%= index+1%>. <%= subtask.description %></td>
+    <dd>
 	<dl>
     <% subtask.subtask_questions.each_with_index do |subtask_question, index| %>
-		<dt>Question <%=index+1%>. </dt>
-		<dd><%= subtask_question.description%></dd>
+		<dt>Question <%=index+1%>. <%= subtask_question.description%></dt>
 
         <%subtask_question_user = subtask_question.subtask_question_users.where(user: @user).first%>
+		<dd><b>Answer. </b> 
 		<% if subtask_question_user != nil%>
-          <dd><b>Answer.</b> <i><%= subtask_question_user.description%></i></dd>
+          <i><%= subtask_question_user.description%></i>
         <% end %>
+    	</dd>
         
     <% end %>
+	</dl>
+    </dd>
 <% end %>
 </dl>
 
@@ -49,19 +52,22 @@
 
 <dl>
 <% @timed_task_user.task.subtasks.each_with_index do |subtask, index| %>
-	<dt><%#= subtask.title %>Task <%= index+1%>. </td>
-    <dd><%= subtask.description %>
+	<dt><%#= subtask.title %>Task <%= index+1%>. <%= subtask.description %></td>
+    <dd>
 	<dl>
     <% subtask.subtask_questions.each_with_index do |subtask_question, index| %>
-		<dt>Question <%=index+1%>. </dt>
-		<dd><%= subtask_question.description%></dd>
+		<dt>Question <%=index+1%>. <%= subtask_question.description%></dt><%= subtask_question.description%>
 
         <%subtask_question_user = subtask_question.subtask_question_users.where(user: @user).first%>
+		<dd><b>Answer. </b> 
 		<% if subtask_question_user != nil%>
-          <dd><b>Answer.</b> <i><%= subtask_question_user.description%></i></dd>
+          <i><%= subtask_question_user.description%></i>
         <% end %>
+        </dd>
 
     <% end %>
+    </dl>
+    </dd>
 <% end %>
 </dl>
 
