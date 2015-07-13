@@ -88,7 +88,7 @@ class HomeController < ApplicationController
 
     if params[:task] == "presurvey"
       #@user.presurvey_status = 1
-      if params[:key] == "1preStaA"
+      if params[:key] == "2preStaB"
         flash[:notice] = "Thank you for completing the pre-participation survey. Proceed to Workflow 1 by clicking its link under the Links section!"
         @user.update_attribute("presurvey_status", 1)
       else
