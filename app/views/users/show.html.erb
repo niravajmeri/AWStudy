@@ -36,7 +36,7 @@
 	<p><strong>Task <%= index+1%>. </strong> <%= subtask.description %> <br/>
 
     <% subtask.subtask_questions.each_with_index do |subtask_question, index| %>
-		<strong>Question <%=index+1%>. <strong> <%= subtask_question.description%> </br/>
+		<strong>Question <%=index+1%>. </strong> <%= subtask_question.description%> </br/>
 
         <%subtask_question_user = subtask_question.subtask_question_users.where(user: @user).first%>
 		<strong>Answer. </strong> 
@@ -61,7 +61,7 @@
 	<p><strong>Task <%= index+1%>. </strong> <%= subtask.description %> <br/>
 
     <% subtask.subtask_questions.each_with_index do |subtask_question, index| %>
-		<strong>Question <%=index+1%>. <strong> <%= subtask_question.description%> </br/>
+		<strong>Question <%=index+1%>. </strong> <%= subtask_question.description%> </br/>
 
         <%subtask_question_user = subtask_question.subtask_question_users.where(user: @user).first%>
 		<strong>Answer. </strong> 

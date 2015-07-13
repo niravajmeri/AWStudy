@@ -23,7 +23,11 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr 
+      <% if user.presurvey_status && user.untimed_survey_status && user.untimed_completion_survey_status && user.timed_survey_status && user.timed_completion_survey_status %>
+        style="background-color: #00CC33;"
+      <% end%>
+      >
         <td><%= user.mturk_id %></td>
         <td><%= user.password %></td>
         <td><%= user.email %></td>
