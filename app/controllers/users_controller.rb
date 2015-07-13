@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
+    @untimed_task_user = @user.task_users.where("is_timed = 0").first
+    @timed_task_user = @user.task_users.where("is_timed = 1").first
+
   end
 
   # GET /users/new

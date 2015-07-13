@@ -15,5 +15,55 @@
   <%= @user.email %>
 </p>
 
+<p>
+	<strong>Workflow 1:</strong> <%= @untimed_task_user.task.title %><br/>
+	Start Time: <%= @untimed_task_user.start_time%><br/>
+	End Time: <%= @untimed_task_user.task.end_time%>
+</p>
+
+<dl>
+<% @untimed_task_user.task.subtasks.each_with_index do |subtask, index| %>
+	<dt><%#= subtask.title %>Task <%= index+1%>. </td>
+    <dd><%= subtask.description %>
+	<dl>
+    <% subtask.subtask_questions.each_with_index do |subtask_question, index| %>
+		<dt>Question <%=index+1%>. </dt>
+		<dd><%= subtask_question.description%></dd>
+
+        <%subtask_question_user = subtask_question.subtask_question_users.where(user: @user).first%>
+		  <% if subtask_question_user != nil%>
+            <dd><b>Answer.</b> <i><%= subtask_question_user.description%></i></dd>
+          <% end %>
+        <% end %>
+    <% end %>
+<% end %>
+</dl>
+
+<hr/>
+
+<p>
+	<strong>Workflow 2:</strong> <%= @timed_task_user.task.title %><br/>
+	Start Time: <%= @timed_task_user.start_time %><br/>
+	End Time: <%= @timed_task_user.task.end_time %>
+</p>
+
+<dl>
+<% @timed_task_user.task.subtasks.each_with_index do |subtask, index| %>
+	<dt><%#= subtask.title %>Task <%= index+1%>. </td>
+    <dd><%= subtask.description %>
+	<dl>
+    <% subtask.subtask_questions.each_with_index do |subtask_question, index| %>
+		<dt>Question <%=index+1%>. </dt>
+		<dd><%= subtask_question.description%></dd>
+
+        <%subtask_question_user = subtask_question.subtask_question_users.where(user: @user).first%>
+		  <% if subtask_question_user != nil%>
+            <dd><b>Answer.</b> <i><%= subtask_question_user.description%></i></dd>
+          <% end %>
+        <% end %>
+    <% end %>
+<% end %>
+</dl>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
