@@ -23,25 +23,25 @@
 
   <tbody>
     <% completed_count = 0%>
-    <% @w1_count = 0 %>
-    <% @w1_ucount = 0 %>
-    <% @w1_tcount = 0 %>
+    <% w1_count = 0 %>
+    <% w1_ucount = 0 %>
+    <% w1_tcount = 0 %>
     
-    <% @w2_count = 0 %>
-    <% @w2_ucount = 0 %>
-    <% @w2_tcount = 0 %>
+    <% w2_count = 0 %>
+    <% w2_ucount = 0 %>
+    <% w2_tcount = 0 %>
 
-    <% @w3_count = 0 %>
-    <% @w3_ucount = 0 %>
-    <% @w3_tcount = 0 %> 
+    <% w3_count = 0 %>
+    <% w3_ucount = 0 %>
+    <% w3_tcount = 0 %> 
 
-    <% @w4_count = 0 %>
-    <% @w4_ucount = 0 %>
-    <% @w4_tcount = 0 %>
+    <% w4_count = 0 %>
+    <% w4_ucount = 0 %>
+    <% w4_tcount = 0 %>
 
-    <% @w5_count = 0 %>
-    <% @w5_ucount = 0 %>
-    <% @w5_tcount = 0 %>
+    <% w5_count = 0 %>
+    <% w5_ucount = 0 %>
+    <% w5_tcount = 0 %>
 
     <% @users.each do |user| %>
       <tr 
@@ -57,22 +57,22 @@
         <td>
           <%= user.untimed_survey_status%>
           <% if user.untimed_survey_status
-              utask_id = user.task_users.where("is_timed = 0").first.id
+              utask_id = user.task_users.where("is_timed = 0").first.task_id
           
               if utask_id == 1 
-                @w1_ucount = @w1_ucount + 1
+                w1_ucount = w1_ucount + 1
             
               elsif utask_id == 2
-                @w2_ucount = @w2_ucount + 1
+                w2_ucount = w2_ucount + 1
 
               elsif utask_id == 3
-                @w3_ucount = @w3_ucount + 1
+                w3_ucount = w3_ucount + 1
 
               elsif utask_id == 4
-                @w4_ucount = @w4_ucount + 1
+                w4_ucount = w4_ucount + 1
 
               elsif utask_id == 5
-                @w5_ucount = @w5_ucount + 1
+                w5_ucount = w5_ucount + 1
               end
             end
           %>
@@ -81,22 +81,22 @@
         <td>
           <%= user.timed_survey_status%>
           <% if user.timed_survey_status
-              ttask_id = user.task_users.where("is_timed = 1").first.id
+              ttask_id = user.task_users.where("is_timed = 1").first.task_id
           
               if ttask_id == 1 
-                @w1_tcount = @w1_tcount + 1
+                w1_tcount = w1_tcount + 1
             
               elsif ttask_id == 2
-                @w2_tcount = @w2_tcount + 1
+                w2_tcount = w2_tcount + 1
 
               elsif ttask_id == 3
-                @w3_tcount = @w3_tcount + 1
+                w3_tcount = w3_tcount + 1
 
               elsif ttask_id == 4
-                @w4_tcount = @w4_tcount + 1
+                w4_tcount = w4_tcount + 1
 
               elsif ttask_id == 5
-                @w5_tcount = @w5_tcount + 1
+                w5_tcount = w5_tcount + 1
               end
             end
           %>
@@ -117,11 +117,11 @@
 </p>
 
 <%
-  @w1_count = @w1_ucount + @w1_tcount
-  @w2_count = @w2_ucount + @w2_tcount
-  @w3_count = @w3_ucount + @w3_tcount
-  @w4_count = @w4_ucount + @w4_tcount
-  @w5_count = @w5_ucount + @w5_tcount
+  w1_count = w1_ucount + w1_tcount
+  w2_count = w2_ucount + w2_tcount
+  w3_count = w3_ucount + w3_tcount
+  w4_count = w4_ucount + w4_tcount
+  w5_count = w5_ucount + w5_tcount
 %>
 
 <table class="table">
@@ -137,32 +137,32 @@
 
   <tr>
     <td>Untimed</td>
-    <td><%=@w1_ucount%></td>
-    <td><%=@w2_ucount%></td>
-    <td><%=@w3_ucount%></td>
-    <td><%=@w4_ucount%></td>
-    <td><%=@w5_ucount%></td>
-    <td><%= @w1_ucount + @w2_ucount + @w3_ucount + @w4_ucount + @w5_ucount %></td>
+    <td><%=w1_ucount%></td>
+    <td><%=w2_ucount%></td>
+    <td><%=w3_ucount%></td>
+    <td><%=w4_ucount%></td>
+    <td><%=w5_ucount%></td>
+    <td><%= w1_ucount + w2_ucount + w3_ucount + w4_ucount + w5_ucount %></td>
   </tr>
 
   <tr>
     <td>Timed</td>
-    <td><%=@w1_tcount%></td>
-    <td><%=@w2_tcount%></td>
-    <td><%=@w3_tcount%></td>
-    <td><%=@w4_tcount%></td>
-    <td><%=@w5_tcount%></td>
-    <td><%= @w1_tcount + @w2_tcount + @w3_tcount + @w4_tcount + @w5_tcount %></td>
+    <td><%=w1_tcount%></td>
+    <td><%=w2_tcount%></td>
+    <td><%=w3_tcount%></td>
+    <td><%=w4_tcount%></td>
+    <td><%=w5_tcount%></td>
+    <td><%= w1_tcount + w2_tcount + w3_tcount + w4_tcount + w5_tcount %></td>
   </tr>
 
   <tr>
     <td>Total</td>
-    <td><%=@w1_count%></td>
-    <td><%=@w2_count%></td>
-    <td><%=@w3_count%></td>
-    <td><%=@w4_count%></td>
-    <td><%=@w5_count%></td>
-    <td><%= @w1_count + @w2_count + @w3_count + @w4_count + @w5_count %></td>
+    <td><%=w1_count%></td>
+    <td><%=w2_count%></td>
+    <td><%=w3_count%></td>
+    <td><%=w4_count%></td>
+    <td><%=w5_count%></td>
+    <td><%= w1_count + w2_count + w3_count + w4_count + w5_count %></td>
   </tr>
 
 </table>
