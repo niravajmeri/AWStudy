@@ -30,17 +30,20 @@
     </div>
   </div>
   <div class="field form-group">
-    <%= f.label :presurvey_status%>
+    
     <div class="col-sm-offset-2 col-sm-10">
-        <%#= f.check_box :presurvey_status%>
-        <%= f.select :presurvey_status, [['True', 1], ['False', 0]], class: 'form-control'%>
+      <div class="checkbox">
+        <%= f.check_box :presurvey_status%>
+        <%#= f.select :presurvey_status, [['True', true], ['False', false]]%>
+        <%= f.label :presurvey_status%>
+      </div>
     </div>
   </div>
   <div class="field form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <div class="checkbox">
-        <%#= f.check_box :untimed_survey_status%>
-        <%= f.select :untimed_survey_status, [['True', 1], ['False', 0]]%>
+        <%= f.check_box :untimed_survey_status%>
+        <%#= f.select :untimed_survey_status, [['True', true], ['False', false]]%>
         <%= f.label :untimed_survey_status%>
       </div>
     </div>
@@ -48,8 +51,8 @@
   <div class="field form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <div class="checkbox">
-        <%#= f.check_box :untimed_completion_survey_status%>
-        <%= f.select :untimed_completion_survey_status, [['True', 1], ['False', 0]]%>
+        <%= f.check_box :untimed_completion_survey_status%>
+        <%#= f.select :untimed_completion_survey_status, [['True', true], ['False', false]]%>
         <%= f.label :untimed_completion_survey_status%>
       </div>
     </div>
@@ -57,8 +60,8 @@
   <div class="field form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <div class="checkbox">
-        <%#= f.check_box :timed_survey_status%>
-        <%= f.select :timed_survey_status, [['True', 1], ['False', 0]]%>
+        <%= f.check_box :timed_survey_status%>
+        <%#= f.select :timed_survey_status, [['True', true], ['False', false]]%>
         <%= f.label :timed_survey_status%>
       </div>
     </div>
@@ -66,8 +69,8 @@
   <div class="field form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <div class="checkbox">
-        <%#= f.check_box :timed_completion_survey_status%>
-        <%= f.select :timed_completion_survey_status, [['True', 1], ['False', 0]]%>
+        <%= f.check_box :timed_completion_survey_status%>
+        <%#= f.select :timed_completion_survey_status, [['True', true], ['False', false]]%>
         <%= f.label :timed_completion_survey_status%>
     </div>
     </div>

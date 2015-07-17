@@ -48,6 +48,12 @@ class UsersController < ApplicationController
     p params[:user][:presurvey_status]
     respond_to do |format|
       if @user.update(user_params)
+        @user.update_attribute(:presurvey_status, params[:user][:presurvey_status])
+        @user.update_attribute(:untimed_survey_status, params[:user][:untimed_survey_status])
+        @user.update_attribute(:untimed_completion_survey_status, params[:user][:untimed_completion_survey_status])
+        @user.update_attribute(:timed_survey_status, params[:user][:timed_survey_status])
+        @user.update_attribute(:timed_completion_survey_status, params[:user][:timed_completion_survey_status])
+
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
