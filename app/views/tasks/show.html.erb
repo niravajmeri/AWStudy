@@ -62,7 +62,48 @@
   </tbody>
 </table>
 
+<br/>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th>Mturk ID</th>
+      <th>Is_timed</th>
+      <th>Start_time</th>
+      <th>End_time</th>
+      <% @task.subtasks.each do |subtask| %>
+        <% subtask.subtask_questions.each do |subtask_question| %>
+          <th><%= subtask_question.description%></th>
+        <% end %>
+      <% end %>    
+    </tr>
+  </thead>
+  <% @task.task_users.each do |taskuser| %>
+  <%user = taskuser.user%>
+  <% if user!=nil && user.presurvey_status && user.untimed_survey_status && user.untimed_completion_survey_status && user.timed_survey_status && user.timed_completion_survey_status %>
+  <tr>
+    <td><%=taskuser.user.mturk_id%></td>
+    <td><%=taskuser.is_timed%></td>
+    <td><%=taskuser.start_time%></td>
+    <td><%=taskuser.end_time%></td>
+
+    <% @task.subtasks.each do |subtask| %>
+      <% subtask.subtask_questions.each do |subtask_question| %>
+        <td>
+          <% subtask_question_user = SubtaskQuestionUser.where("subtask_question_id = ? and user_id = ?", subtask_question.id, taskuser.user_id).first%>
+          <% if subtask_question_user != nil %>
+            <%= subtask_question_user.description%>
+          <% end %>
+        </td>
+      <% end %>
+    <% end %>
+
+  </tr>
+  <% end%> <!-- END IF-STATUS-TRUE-->
+  <% end %> <!-- END LOOP -->
+</table>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
+
+
