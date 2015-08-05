@@ -1,3 +1,22 @@
-== README
+== About WebApp
 
 Mturk site for the gathering seed for simulation
+
+== Getting Started
+
+1. Update database privileges in <tt>./config/database.yml</tt>
+
+2. At the command prompt, change directory to <tt>AW-Study</tt> and create the database:
+   <tt>rake db:create</tt> to create database
+
+3. Run migration script
+   <tt>rake db:migrate</tt>
+
+4. Install the required gems:
+   <tt>bundle install</tt>
+
+5. Start the server:
+   <tt>rails s </tt>
+
+6. Open the application in the browser:
+   <tt>http://localhost:3000</tt>
