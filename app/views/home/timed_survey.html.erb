@@ -1,6 +1,12 @@
+<%=javascript_include_tag "timer"%>
 <div class="bg-info" style="background-color: #d9534f; color: #ffd800 ; font-size: 12pt; padding: 5px; font-weight: bold;">
-  For bonus, answer all questions correctly and "Submit Workflow 2" in 30 minutes. <br/>
-  Start Time: <%= @task_user.start_time.localtime.strftime("%I:%M %p. %b %d, %Y (%z)")%>
+  For bonus, answer all questions correctly and "Submit Workflow" in 45 minutes. <br/>
+  <!--Start Time: <%#= @task_user.start_time.localtime.strftime("%I:%M %p. %b %d, %Y (%z)")%>-->
+  <%= hidden_field_tag :bonusendtime, @task_user.start_time%>
+  <!--<input id="bonusendtime" type="hidden" value="2015-12-17 9:20:52"/>-->
+</div>
+<div class="navbar-fixed-top col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="background-color: yellow; color: red; font-size: 24px; text-align: center; position: fixed; left: 0px; top: 40px; padding: 5px;">
+  Bonus opportunity expires in <span id="countdown"></span>!
 </div>
 <br/>
 <div class="bg-info" style="color: #d9534f; font-size: 12pt; padding: 5px; font-weight: bold;">
