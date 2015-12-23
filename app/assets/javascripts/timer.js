@@ -70,7 +70,7 @@ window.onload = function () {
 };
 */
 
-$(document).on('page:load', function() {
+$(document).on('ready page:load', function() {
     var starttime = document.getElementById("bonusstarttime");
     //alert(starttime.value);
     var duration = document.getElementById("bonusduration").value;

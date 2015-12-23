@@ -7,6 +7,7 @@
 <table class="table">
   <thead>
     <tr>
+	  <th>Workflow Type</th>
       <th>Mturk</th>
       <th>Password</th>
       <th>Email</th>
@@ -50,6 +51,13 @@
         <%completed_count = completed_count + 1%>
       <% end%>
       >
+	    <td>
+    <%  if user.id % 4 == 1 %> U1T5
+    <%  elsif user.id % 4 == 2 %> T1U5
+    <%  elsif user.id % 4 == 3 %> U5T1
+    <%  elsif user.id % 4 == 0 %> T5U1
+    <%  end%>
+		</td>
         <td><%= user.mturk_id %></td>
         <td><%= user.password %></td>
         <td><%= user.email %></td>
