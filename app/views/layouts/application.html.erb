@@ -3,7 +3,11 @@
 <head>
   <title>LAS AW Study</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%#= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application"%>
+  <% if params[:controller] == "home" and  params[:action] == "timed_survey"%>
+    <%#=javascript_include_tag "timer"%>
+  <%end%>
   <%= csrf_meta_tags %>
 </head>
 <body>

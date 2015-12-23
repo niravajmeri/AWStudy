@@ -1,6 +1,5 @@
-<%=javascript_include_tag "timer"%>
 <div class="bg-info" style="background-color: #d9534f; color: #ffd800 ; font-size: 12pt; padding: 5px; font-weight: bold;">
-  For bonus, answer all questions correctly and "Submit Workflow" in <%if @task_user.task_id == 1%>37<%else%>35<%end%> minutes. <br/>
+  For bonus, perform in the top 10% of research participants and "Submit Workflow" in <%if @task_user.task_id == 1%>37<%else%>35<%end%> minutes. <br/>
   <!--Start Time: <%#= @task_user.start_time.localtime.strftime("%I:%M %p. %b %d, %Y (%z)")%>-->
   <%= hidden_field_tag :bonusstarttime, @task_user.start_time%>
   <%if @task_user.task_id == 1%>
