@@ -102,16 +102,30 @@ class HomeController < ApplicationController
         @task_user.end_time = Time.current
         @task_user.save
       end
-      flash[:notice] = "Thank you for completing Workflow 1. Proceed to Workflow 1 Completion Survey by clicking its link under the Links section!"
+	  if session[:user_id] % 4 == 1 || session[:user_id] % 4 == 3
+        flash[:notice] = "Thank you for completing Workflow 1. Proceed to Workflow 1 Completion Survey by clicking its link under the Links section!"
+	  else 
+	    flash[:notice] = "Thank you for completing Workflow 2. Proceed to Workflow 2 Completion Survey by clicking its link under the Links section!"
+	  end
       @user.update_attribute("untimed_survey_status", 1)
     elsif params[:task] == "untimed_completion_survey"
       #@user.untimed_completion_survey_status = 1
       if params[:task_id] == "1" and params[:key] == "3wOneC"
         @user.update_attribute("untimed_completion_survey_status", 1)
-        flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
+		if session[:user_id] % 4 == 1 || session[:user_id] % 4 == 3
+          flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
+	    else 
+	      flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
+	    end
+        
       elsif  params[:task_id] == "5" and params[:key] == "3wFivC"
         @user.update_attribute("untimed_completion_survey_status", 1)
-        flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
+        if session[:user_id] % 4 == 1 || session[:user_id] % 4 == 3
+          flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
+	    else 
+	      flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
+	    end
+
       else
         flash[:error] = "Invalid key! Complete the Workflow 1 Completion Survey for the key."
         #redirect_to controller: :home, action: :untimed_completion_survey
@@ -125,16 +139,28 @@ class HomeController < ApplicationController
         #@task_user.end_time = Time.now.getlocal.zone
         @task_user.save
       end
-      flash[:notice] = "Thank you for completing Workflow 2. Proceed to Workflow 2 Completion Survey by clicking its link under the Links section!"
+      if session[:user_id] % 4 == 2 || session[:user_id] % 4 == 0
+        flash[:notice] = "Thank you for completing Workflow 1. Proceed to Workflow 1 Completion Survey by clicking its link under the Links section!"
+	  else 
+	    flash[:notice] = "Thank you for completing Workflow 2. Proceed to Workflow 2 Completion Survey by clicking its link under the Links section!"
+	  end
       @user.update_attribute("timed_survey_status", 1)
     elsif params[:task] == "timed_completion_survey"
       #@user.timed_completion_survey_status = 1
       if params[:task_id] == "1" and params[:key] == "3wOneC"
         @user.update_attribute("timed_completion_survey_status", 1)
-        flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
+        if session[:user_id] % 4 == 2 || session[:user_id] % 4 == 0
+          flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
+	    else 
+	      flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
+	    end
       elsif  params[:task_id] == "5" and params[:key] == "3wFivC"
         @user.update_attribute("timed_completion_survey_status", 1)
-        flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
+        if session[:user_id] % 4 == 2 || session[:user_id] % 4 == 0
+          flash[:notice] = "Thank you for completing Workflow 1 Completion Survey. Proceed to Workflow 2 by clicking its link under the Links section!"
+	    else 
+	      flash[:notice] = "Thank you for completing Workflow 2 Completion Survey. Please note the COMPLETION KEY highlighted below."
+	    end
       else
         flash[:error] = "Invalid key! Complete the Workflow 2 Completion Survey for the key."
         #redirect_to controller: :home, action: :timed_completion_survey        

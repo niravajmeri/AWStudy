@@ -1,4 +1,8 @@
+<%if session[:user_id] % 2 == 2 || session[:user_id] % 2 == 0%>
+<h1>Workflow 1 Completion Survey</h1>
+<%else%>
 <h1>Workflow 2 Completion Survey</h1>
+<%end%>
 <p>Please complete the workflow completion survey by clicking the link below.</p>
   <ul>
     <li>
@@ -15,7 +19,7 @@
     		href="https://docs.google.com/forms/d/1GTstm1bJgj_X9VePLd6iLOk9io_gefQNhaOM5jvnxHU/viewform"
     		<%end%>
     	 target="_blank">
-    	Workflow 2 Completion Survey</a>
+    	Workflow Completion Survey</a>
     </li>
   </ul>
 

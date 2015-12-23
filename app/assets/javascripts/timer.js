@@ -55,6 +55,7 @@ function CountDownTimer(dt, id)
         timer = setInterval(showRemaining, 1000);
     }
 
+/*
 window.onload = function () {
     var starttime = document.getElementById("bonusstarttime");
     //alert(starttime.value);
@@ -67,4 +68,18 @@ window.onload = function () {
     //startTimer(fiveMinutes, display);
     CountDownTimer(endtime,'countdown');
 };
+*/
+
+$(document).on('page:load', function() {
+    var starttime = document.getElementById("bonusstarttime");
+    //alert(starttime.value);
+    var duration = document.getElementById("bonusduration").value;
+	//alert(duration);
+    var endtime = new Date(starttime.value);
+    endtime = new Date(endtime.getTime() + duration*60000);
+    //alert(endtime);
+    //var fiveMinutes = 60 * 5, display = document.querySelector('#time');
+    //startTimer(fiveMinutes, display);
+    CountDownTimer(endtime,'countdown');
+});
 
