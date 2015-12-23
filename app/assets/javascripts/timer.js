@@ -47,18 +47,20 @@ function CountDownTimer(dt, id)
             //document.getElementById(id).innerHTML = days + 'days '; // Uncomment to include days
             //document.getElementById(id).innerHTML += hours + 'hrs ';
             //document.getElementById(id).innerHTML = hours + 'hrs ';
-            document.getElementById(id).innerHTML = 'Bonus opportunity expires in'
+            document.getElementById(id).innerHTML = 'Bonus opportunity expires in '
             document.getElementById(id).innerHTML += minutes + 'mins ';
-            document.getElementById(id).innerHTML += seconds + 'secs';
+            document.getElementById(id).innerHTML += seconds + 'secs!';
         }
 
         timer = setInterval(showRemaining, 1000);
     }
 
+/*
 window.onload = function () {
-    var starttime = document.getElementById("bonusendtime");
+    var starttime = document.getElementById("bonusstarttime");
     //alert(starttime.value);
-    var duration = 45; // Duration is set to 45 minutes
+    var duration = document.getElementById("bonusduration").value;
+	//alert(duration);
     var endtime = new Date(starttime.value);
     endtime = new Date(endtime.getTime() + duration*60000);
     //alert(endtime);
@@ -66,4 +68,18 @@ window.onload = function () {
     //startTimer(fiveMinutes, display);
     CountDownTimer(endtime,'countdown');
 };
+*/
+
+$(document).on('page:load', function() {
+    var starttime = document.getElementById("bonusstarttime");
+    //alert(starttime.value);
+    var duration = document.getElementById("bonusduration").value;
+	//alert(duration);
+    var endtime = new Date(starttime.value);
+    endtime = new Date(endtime.getTime() + duration*60000);
+    //alert(endtime);
+    //var fiveMinutes = 60 * 5, display = document.querySelector('#time');
+    //startTimer(fiveMinutes, display);
+    CountDownTimer(endtime,'countdown');
+});
 

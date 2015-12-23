@@ -18,59 +18,8 @@
   
 <h2> Links </h2>
 
-  <ul>
-    <li>
-      <% if !@user.presurvey_status %>
-        <%=link_to "Pre-participation Survey", controller: :home, action: :pre_survey%>
-      <% elsif @user.presurvey_status%>
-        <s>Pre-participation Survey</s>
-      <% end %>
-    </li>
-    <li><%#=link_to "Task 1", :controller=> :home, :action => :untimed_survey%>
-      <% if !@user.untimed_survey_status%> 
-        <% if @user.presurvey_status%>
-          <%=link_to "Workflow 1", controller: :home, action: :untimed_survey%>
-        <% else %>
-          Workflow 1
-        <% end %>
-      <% elsif @user.untimed_survey_status%>
-        <s>Workflow 1</s>
-      <%end%>
-    </li>
-    <li>
-      <% if !@user.untimed_completion_survey_status%> 
-        <% if @user.untimed_survey_status%>
-          <%=link_to "Workflow 1 Completion Survey", controller: :home, action: :untimed_completion_survey%>
-        <% else %>
-          Workflow 1 Completion Survey
-        <% end %>
-      <% elsif @user.untimed_completion_survey_status%>
-        <s>Workflow 1 Completion Survey</s>
-      <%end%>    
-    </li>
-    <li>
-      <% if !@user.timed_survey_status%> 
-        <% if @user.untimed_completion_survey_status%>
-          <%=link_to "Workflow 2", controller: :home, action: :timed_survey%>
-        <% else %>
-          Workflow 2
-        <% end %>
-      <% elsif @user.timed_survey_status%>
-        <s>Workflow 2</s>
-      <%end%>
-    </li>
-    <li>
-      <% if !@user.timed_completion_survey_status%> 
-        <% if @user.timed_survey_status%>
-          <%=link_to "Workflow 2 Completion Survey", controller: :home, action: :timed_completion_survey%>
-        <% else %>
-          Workflow 2 Completion Survey
-        <% end %>
-      <% elsif @user.timed_completion_survey_status%>
-        <s>Workflow 2 Completion Survey</s>
-
-        <h4 style="background-color: #FF0000; color: #00FF00;">MTurk HIT: 2posFinY</h4>
-
-      <%end%>    
-    </li>
-  </ul>
+<%if @user.id % 4 == 1 || @user.id % 4 == 3 %>
+  <%= render 'untimed_first' %>
+<%else%>
+  <%= render 'timed_first' %>
+<%end%>

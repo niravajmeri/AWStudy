@@ -3,11 +3,15 @@
 <ul>
 <li>Press "Save" to record answer for each question. All unsaved anwer will be lost.</li>
 <li>To update an answer, change the answer in the textbox and press "Update". </li>
-<li>Once you have answered all questions confidently, press "Submit Workflow 1". You can do this only once. </li>
+<li>Once you have answered all questions confidently, press "Submit Workflow". You can do this only once. </li>
 </ul>
 </div>
 
+<%if session[:user_id] % 2 == 1 || session[:user_id] % 2 == 3%>
 <h1>Workflow 1</h1>
+<%else%>
+<h1>Workflow 2</h1>
+<%end%>
 <p class="text-justify"><%=@task_user.task.description%><p>
 
 <p class="text-justify">
@@ -77,4 +81,9 @@
         </dd>
     <% end %>
   </dl>
-<%= button_to "Submit Workflow 1", {contoller: :home, action: :update_completion_status, task_user_id: @task_user.id, task: "untimed_survey"}, {class: 'btn btn-success', data: {confirm: "Have you checked over ALL your answers to verify they were recorded properly? If so, select OK. If you believe that your answers were not recorded properly, select Cancel and reenter your answers, remembering to select Save after EVERY answer before final Workflow submission."}}%>
+<%= button_to "Submit Workflow", {contoller: :home, action: :update_completion_status, task_user_id: @task_user.id, task: "untimed_survey"}, {class: 'btn btn-success', data: {confirm: "Have you checked over ALL your answers to verify they were recorded properly? If so, select OK. If you believe that your answers were not recorded properly, select Cancel and reenter your answers, remembering to select Save after EVERY answer before final Workflow submission."}}%>
+<p>
+<b>Note:</b> After submitting the workflow, you cannot edit your answers again.
+<br/>
+Check over ALL your answers to verify they were recorded properly. If you believe that your answers were not recorded properly, reenter your answers, and select Save after EVERY answer before final Workflow submission.
+</p>
