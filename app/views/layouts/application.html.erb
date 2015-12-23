@@ -13,64 +13,101 @@
   <div class="container-fluid">
     <div class="row">
       <% if session[:user_id] != nil%>
+	    <!--ADMIN NAVIGATION-->
         <% if session[:user_id] == 1%>
 
-      <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav nav-sidebar">
-          <li <% if params[:controller] == "tasks"%> class="active" <%end%>><%= link_to "Tasks", controller: :tasks, action: :index%></li>
-          <li <% if params[:controller] == "subtasks"%> class="active" <%end%>><%= link_to "Subtasks", controller: :subtasks, action: :index%></li>
-          <li <% if params[:controller] == "subtask_questions"%> class="active" <%end%>><%= link_to "Subtask Questions", controller: :subtask_questions, action: :index%></li>
-        </ul>
-        <ul class="nav nav-sidebar">
-          <li <% if params[:controller] == "users"%> class="active" <%end%>><%= link_to "Users", controller: :users, action: :index%></li>
-          <li <% if params[:controller] == "task_users"%> class="active" <%end%>><%= link_to "Task Users", controller: :task_users, action: :index%></li>
-          <li <% if params[:controller] == "subtask_question_users"%> class="active" <%end%>><%= link_to "User Answers", controller: :subtask_question_users, action: :index%></li>
-          
-        </ul>
-      </div>
+		  <div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+			  <li <% if params[:controller] == "tasks"%> class="active" <%end%>><%= link_to "Tasks", controller: :tasks, action: :index%></li>
+			  <li <% if params[:controller] == "subtasks"%> class="active" <%end%>><%= link_to "Subtasks", controller: :subtasks, action: :index%></li>
+			  <li <% if params[:controller] == "subtask_questions"%> class="active" <%end%>><%= link_to "Subtask Questions", controller: :subtask_questions, action: :index%></li>
+			</ul>
+			<ul class="nav nav-sidebar">
+			  <li <% if params[:controller] == "users"%> class="active" <%end%>><%= link_to "Users", controller: :users, action: :index%></li>
+			  <li <% if params[:controller] == "task_users"%> class="active" <%end%>><%= link_to "Task Users", controller: :task_users, action: :index%></li>
+			  <li <% if params[:controller] == "subtask_question_users"%> class="active" <%end%>><%= link_to "User Answers", controller: :subtask_question_users, action: :index%></li>
+			  
+			</ul>
+		  </div>
     
+        
+        <% elsif session[:user_id] % 4 == 1 || session[:user_id] % 4 == 3%>
+		  <div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+			  <li <% if params[:controller] == "home" and params[:action] == "welcome"%> class="active" <%end%>><%= link_to "Dashboard", controller: :home, action: :welcome%></li>
+			  <li 
+				<% if params[:controller] == "home" and  params[:action] == "pre_survey"%> class="active" <%end%>>
+				<a href="#" <% if @user.presurvey_status %> style="text-decoration:line-through" <%end%> >
+				  Pre-participation Survey
+				</a>
 
-        <% else %>
-      <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav nav-sidebar">
-          <li <% if params[:controller] == "home" and params[:action] == "welcome"%> class="active" <%end%>><%= link_to "Dashboard", controller: :home, action: :welcome%></li>
-          <li 
-            <% if params[:controller] == "home" and  params[:action] == "pre_survey"%> class="active" <%end%>>
-            
-            <%#=link_to "Pre-participation Survey", controller: :home, action: :pre_survey%>
-            <a href="#" <% if @user.presurvey_status %> style="text-decoration:line-through" <%end%> >
-              Pre-participation Survey
-            </a>
+			  </li>
 
-          </li>
+			</ul>
+			<ul class="nav nav-sidebar">
+			  <li <% if params[:controller] == "home" and  params[:action] == "untimed_survey"%> class="active" <%end%>>
+				<a href="#" <% if @user.untimed_survey_status %> style="text-decoration:line-through" <%end%>>
+				  Workflow 1
+				</a>
+			  </li>
+			  <li <% if params[:controller] == "home" and params[:action] == "untimed_completion_survey"%> class="active" <%end%>>
+				<a href="#" <% if @user.untimed_completion_survey_status %> style="text-decoration:line-through" <%end%>>
+				  Workflow 1 Completion Survey
+				</a>
+			  </li>
+			</ul>
+			<ul class="nav nav-sidebar">
+			  <li <% if params[:controller] == "home" and  params[:action] == "timed_survey"%> class="active" <%end%>>
+				<a href="#" <% if @user.timed_survey_status %> style="text-decoration:line-through" <%end%>>
+				  Workflow 2
+				</a>        
+			  </li>
+			  <li <% if params[:controller] == "home" and  params[:action] == "timed_completion_survey"%> class="active" <%end%>>
+				<a href="#" <% if @user.timed_completion_survey_status %> style="text-decoration:line-through" <%end%>>
+				  Workflow 2 Completion Survey
+				</a>
+			  </li>
+			</ul>
+		  </div>
+		<% elsif session[:user_id] % 4 == 2 || session[:user_id] % 4 == 0%>  
+		  <div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+			  <li <% if params[:controller] == "home" and params[:action] == "welcome"%> class="active" <%end%>><%= link_to "Dashboard", controller: :home, action: :welcome%></li>
+			  <li 
+				<% if params[:controller] == "home" and  params[:action] == "pre_survey"%> class="active" <%end%>>
+				<a href="#" <% if @user.presurvey_status %> style="text-decoration:line-through" <%end%> >
+				  Pre-participation Survey
+				</a>
 
-        </ul>
-        <ul class="nav nav-sidebar">
-          <li <% if params[:controller] == "home" and  params[:action] == "untimed_survey"%> class="active" <%end%>>
-            <a href="#" <% if @user.untimed_survey_status %> style="text-decoration:line-through" <%end%>>
-              Workflow 1
-            </a>
-          </li>
-          <li <% if params[:controller] == "home" and params[:action] == "untimed_completion_survey"%> class="active" <%end%>>
-            <a href="#" <% if @user.untimed_completion_survey_status %> style="text-decoration:line-through" <%end%>>
-              Workflow 1 Completion Survey
-            </a>
-          </li>
-        </ul>
-        <ul class="nav nav-sidebar">
-          <li <% if params[:controller] == "home" and  params[:action] == "timed_survey"%> class="active" <%end%>>
-            <a href="#" <% if @user.timed_survey_status %> style="text-decoration:line-through" <%end%>>
-              Workflow 2
-            </a>        
-          </li>
-          <li <% if params[:controller] == "home" and  params[:action] == "timed_completion_survey"%> class="active" <%end%>>
-            <%#=link_to "Workflow 2 Completion Survey", controller: :home, action: :timed_completion_survey%>
-            <a href="#" <% if @user.timed_completion_survey_status %> style="text-decoration:line-through" <%end%>>
-              Workflow 2 Completion Survey
-            </a>
-          </li>
-        </ul>
-      </div>
+			  </li>
+
+			</ul>
+			<ul class="nav nav-sidebar">
+			  <li <% if params[:controller] == "home" and  params[:action] == "timed_survey"%> class="active" <%end%>>
+				<a href="#" <% if @user.timed_survey_status %> style="text-decoration:line-through" <%end%>>
+				  Workflow 1
+				</a>
+			  </li>
+			  <li <% if params[:controller] == "home" and params[:action] == "timed_completion_survey"%> class="active" <%end%>>
+				<a href="#" <% if @user.timed_completion_survey_status %> style="text-decoration:line-through" <%end%>>
+				  Workflow 1 Completion Survey
+				</a>
+			  </li>
+			</ul>
+			<ul class="nav nav-sidebar">
+			  <li <% if params[:controller] == "home" and  params[:action] == "untimed_survey"%> class="active" <%end%>>
+				<a href="#" <% if @user.untimed_survey_status %> style="text-decoration:line-through" <%end%>>
+				  Workflow 2
+				</a>        
+			  </li>
+			  <li <% if params[:controller] == "home" and  params[:action] == "untimed_completion_survey"%> class="active" <%end%>>
+				<a href="#" <% if @user.untimed_completion_survey_status %> style="text-decoration:line-through" <%end%>>
+				  Workflow 2 Completion Survey
+				</a>
+			  </li>
+			</ul>
+		  </div>
+		  
         <%end%>
       <% end %>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
